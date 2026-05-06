@@ -14,7 +14,6 @@ const proyectoService = (() => {
     let filtrado = proyectos.filter((p) =>
       p.titulo.toLowerCase().includes(texto.toLowerCase()),
     );
-    console.log(texto);
     return filtrado;
   };
 
