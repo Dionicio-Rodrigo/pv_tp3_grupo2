@@ -12,8 +12,8 @@ function ListaProyectos() {
 
   return (
     <div className="contenedor">
-      //Busqueda puede recibir una funcion cualquiera //Busqueda llamara a esa
-      funcion cuando cambie
+      {/*Busqueda puede recibir una funcion cualquiera*/
+      /*Busqueda llamara a esa funcion cuando cambie */}
       <Busqueda funcion={mandar}> Buscar:</Busqueda>
       {proyectos.map((proyecto) => (
         <div id={`carta${proyecto.id}`} className="card">
