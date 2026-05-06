@@ -1,7 +1,10 @@
-import { useState } from "react";
+import ListaProyectos from "./components/ListaProyectos.jsx";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <ListaProyectos />
+    </>
+  );
 }
-
 export default App;
