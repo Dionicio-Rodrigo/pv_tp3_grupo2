@@ -1,16 +1,20 @@
 import { useState } from "react";
 import proyectoService from "../services/proyectoServices.js";
+import { Busqueda } from "./Busqueda.jsx";
 
 function ListaProyectos() {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),
   );
-
-  const mandar = (e) => {
-    setProyectos(proyectoService.filtrar(e.target.value));
+  const mandar = (texto) => {
+    setProyectos(proyectoService.filtrar(texto));
   };
+
   return (
     <div className="contenedor">
+      //Busqueda puede recibir una funcion cualquiera //Busqueda llamara a esa
+      funcion cuando cambie
+      <Busqueda funcion={mandar}> Buscar:</Busqueda>
       {proyectos.map((proyecto) => (
         <div id={`carta${proyecto.id}`} className="card">
           <h1>{proyecto.titulo}</h1>
@@ -18,10 +22,6 @@ function ListaProyectos() {
           <p>{proyecto.finalizado == true ? "Finalizado" : "En Proceso"}</p>
         </div>
       ))}
-      <label>
-        Busqueda:
-        <input type="text" onChange={mandar} />
-      </label>
     </div>
   );
 }
