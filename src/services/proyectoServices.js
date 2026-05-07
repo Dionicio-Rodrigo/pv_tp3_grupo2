@@ -14,7 +14,6 @@ const proyectoService = (() => {
     //Creamos un id para el nuevo proyecto
     nuevo.id = proyectos.length + 1;
     proyectos = [...proyectos, nuevo];
-    console.log(nuevo);
   };
 
   const borrarProyecto = (id) => {

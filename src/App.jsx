@@ -34,8 +34,11 @@ function App() {
         <Bandeja funcion={buscar}>Buscar:</Bandeja>
       </aside>
       <main>
-        <ListaProyectos lista={copiaProyectos} funcion={eliminar} />
-        <Agregar funcion={agregar} />
+        <h1>Proyectos</h1>
+        <section className="contenedor">
+          <ListaProyectos lista={copiaProyectos} funcion={eliminar} />
+          <Agregar funcion={agregar} />
+        </section>
       </main>
       <Footer />
     </>

@@ -44,13 +44,13 @@ export const Agregar = ({ funcion, objeto }) => {
         }}
       >
         <Bandeja funcion={setTitulo} state={titulo}>
-          Titulo:
+          Titulo: <br />
         </Bandeja>
         <Bandeja funcion={setCategoria} state={categoria}>
-          Categoria:
+          Categoria: <br />
         </Bandeja>
         <div id="Estados">
-          Estado:
+          Estado: <br />
           <label>
             En proceso
             <input

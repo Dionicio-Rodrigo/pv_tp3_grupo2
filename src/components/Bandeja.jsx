@@ -5,7 +5,7 @@ export const Bandeja = ({ children, funcion, state }) => {
     funcion(entrada.target.value);
   };
   return (
-    <label className="Buscador">
+    <label className="Bandeja">
       {children}
       <input type="text" value={state} onChange={handleFuncion} />
     </label>
