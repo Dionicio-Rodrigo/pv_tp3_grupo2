@@ -1,0 +1,93 @@
+:root {
+  --luz-filtros: rgb(229, 184, 164);
+  --base-filtros: rgb(220, 158, 130);
+  --oscuro-filtros: rgb(209, 148, 120);
+  --Rosa: rgb(235, 94, 165);
+  --Rojo: rgb(235 94 94);
+  --Naranja: rgb(220, 158, 130);
+  --Negro: rgb(41, 47, 54);
+  --Celeste: rgb(94, 164, 235);
+  --Blanco: rgb(247, 255, 247);
+  --Gris: rgb(214, 219, 224);
+  color: var(--Negro);
+  font-family: Arial, Helvetica, sans-serif;
+}
+html,
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+#root {
+  display: grid;
+  margin: 0;
+  grid-template-columns: minmax(120px, 15%) 1fr 33%;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header nav"
+    "aside main main"
+    "footer footer footer";
+  min-height: 100vh;
+  background-color: var(--Blanco);
+  color: var(--Negro);
+}
+
+header {
+  background-color: var(--Celeste);
+  padding-inline: 15px;
+  color: var(--Blanco);
+  align-content: center;
+  text-shadow: 1px 1px var(--Negro);
+  grid-area: header;
+}
+
+nav {
+  grid-area: nav;
+  background-color: var(--Celeste);
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+nav > a {
+  padding: 0.5em;
+  flex-grow: 1;
+  background-color: var(--Negro);
+  text-decoration: none;
+  color: var(--Blanco);
+}
+
+.navact {
+  background-color: var(--Celeste);
+  text-shadow: 1px 1px var(--Negro);
+}
+
+nav > a:hover {
+  text-shadow: 1px 1px var(--Negro);
+  background-color: var(--Celeste);
+}
+
+main {
+  background-color: var(--Blanco);
+  border: 2;
+  padding: 1em;
+  grid-area: main;
+}
+
+footer {
+  padding: 0.5em;
+  background-color: var(--Negro);
+  grid-area: footer;
+}
+
+footer > p {
+  color: var(--Blanco);
+  margin: 0;
+}
+
+aside {
+  background-color: var(--base-filtros);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}

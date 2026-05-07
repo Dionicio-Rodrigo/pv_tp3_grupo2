@@ -16,7 +16,7 @@ const proyectoService = (() => {
     proyectos = [...proyectos, nuevo];
   };
 
-  const borrar = (id) => {
+  const borrarProyecto = (id) => {
     //El filtrado almacenara todos los elementos que no tengan el id ingresado
     proyectos = proyectos.filter((p) => p.id != id);
   };

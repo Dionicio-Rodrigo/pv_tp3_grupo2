@@ -35,6 +35,7 @@ export const Agregar = ({ funcion, objeto }) => {
 
   return (
     <div className="cartaAgregar">
+      <h2>Agregar</h2>
       <form>
         <Bandeja funcion={setTitulo} state={titulo}>
           Titulo:

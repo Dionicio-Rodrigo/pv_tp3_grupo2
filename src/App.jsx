@@ -6,7 +6,8 @@ import { Bandeja } from "./components/Bandeja.jsx";
 import { Header } from "./components/Header.jsx";
 import { Nav } from "./components/Nav.jsx";
 import { Footer } from "./components/Footer.jsx";
-
+//Estilos CSS
+import "./css/App.css";
 function App() {
   // Creamos una copia para poder mostrar los proyectos sin afectar a los proyectos almacenados
   const Proyectos = proyectoService.obtenerProyectos();
