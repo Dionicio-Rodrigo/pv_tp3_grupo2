@@ -14,8 +14,11 @@ function App() {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),
   );
-  const mandar = (texto) => {
-    setProyectos(proyectoService.filtrar(texto));
+  const buscar = (texto) => {
+    setProyectos(proyectoService.buscarProyecto(texto));
+  };
+  const eliminar = (id) => {
+    setProyectos(proyectoService.borrar(id));
   };
 
   return (
@@ -23,10 +26,10 @@ function App() {
       <Header />
       <Nav activo="2" />
       <aside>
-        <Busqueda funcion={mandar}>Buscar:</Busqueda>
+        <Busqueda funcion={buscar}>Buscar:</Busqueda>
       </aside>
       <main>
-        <ListaProyectos lista={proyectos} />
+        <ListaProyectos lista={proyectos} funcion={eliminar} />
       </main>
       <Footer />
     </>
