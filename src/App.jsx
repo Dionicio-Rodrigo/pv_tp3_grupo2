@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Footer } from "./components/Footer.jsx";
 import { Header } from "./components/Header.jsx";
 import { Nav } from "./components/Nav.jsx";
@@ -7,18 +7,16 @@ import proyectoService from "./services/proyectoServices.js";
 import { Busqueda } from "./components/Busqueda.jsx";
 
 function App() {
-  // App se encargara de pasarle el useState de la lista a
-  // ListaProyectos para mostrarla
-  // Busqueda para cambiarla
+  // Creamos una copia para poder mostrar los proyectos sin afectar a los proyectos guardados
+  const Proyectos = proyectoService.obtenerProyectos();
+  const [copiaProyectos, setcopiaProyectos] = useState(Proyectos);
 
-  const [proyectos, setProyectos] = useState(
-    proyectoService.obtenerProyectos(),
-  );
   const buscar = (texto) => {
-    setProyectos(proyectoService.buscarProyecto(texto));
+    setcopiaProyectos(proyectoService.buscarProyecto(texto, Proyectos));
   };
   const eliminar = (id) => {
-    setProyectos(proyectoService.borrar(id));
+    proyectoService.borrar(id);
+    setcopiaProyectos(proyectoService.obtenerProyectos());
   };
 
   return (
@@ -29,7 +27,7 @@ function App() {
         <Busqueda funcion={buscar}>Buscar:</Busqueda>
       </aside>
       <main>
-        <ListaProyectos lista={proyectos} funcion={eliminar} />
+        <ListaProyectos lista={copiaProyectos} funcion={eliminar} />
       </main>
       <Footer />
     </>
