@@ -10,6 +10,11 @@ const proyectoService = (() => {
     return [...proyectos];
   };
 
+  const agregarProyecto = (nuevo) => {
+    nuevo.id = proyectos.length + 1;
+    proyectos = [...proyectos, nuevo];
+  };
+
   const borrar = (id) => {
     //El filtrado almacenara todos los elementos que no tengan el id ingresado
     proyectos = proyectos.filter((p) => p.id != id);
@@ -24,7 +29,7 @@ const proyectoService = (() => {
     return [...filtrado];
   };
 
-  return { obtenerProyectos, buscarProyecto, borrar };
+  return { obtenerProyectos, buscarProyecto, borrar, agregarProyecto };
 })();
 
 export default proyectoService;
