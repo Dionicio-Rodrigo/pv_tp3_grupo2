@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 export const Busqueda = ({ children, funcion }) => {
+  // La funcion que recibe busqueda se llamara
+  // cuando el input cambie, mandando el valor de este
   const handleFuncion = (entrada) => {
     funcion(entrada.target.value);
   };
