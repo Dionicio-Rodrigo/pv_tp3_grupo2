@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Footer } from "./components/Footer.jsx";
+import proyectoService from "./services/proyectoServices.js";
+import { ListaProyectos } from "./components/ListaProyectos.jsx";
+import { Agregar } from "./components/Agregar.jsx";
+import { Bandeja } from "./components/Bandeja.jsx";
 import { Header } from "./components/Header.jsx";
 import { Nav } from "./components/Nav.jsx";
-import { ListaProyectos } from "./components/ListaProyectos.jsx";
-import proyectoService from "./services/proyectoServices.js";
-import { Bandeja } from "./components/Bandeja.jsx";
-import { Agregar } from "./components/Agregar.jsx";
+import { Footer } from "./components/Footer.jsx";
 
 function App() {
   // Creamos una copia para poder mostrar los proyectos sin afectar a los proyectos almacenados
@@ -16,7 +16,7 @@ function App() {
     setcopiaProyectos(proyectoService.buscarProyecto(texto, Proyectos));
   };
   const eliminar = (id) => {
-    proyectoService.borrar(id);
+    proyectoService.borrarProyecto(id);
     setcopiaProyectos(proyectoService.obtenerProyectos());
   };
 

@@ -11,6 +11,7 @@ const proyectoService = (() => {
   };
 
   const agregarProyecto = (nuevo) => {
+    //Creamos un id para el nuevo proyecto
     nuevo.id = proyectos.length + 1;
     proyectos = [...proyectos, nuevo];
   };
@@ -29,7 +30,7 @@ const proyectoService = (() => {
     return [...filtrado];
   };
 
-  return { obtenerProyectos, buscarProyecto, borrar, agregarProyecto };
+  return { obtenerProyectos, buscarProyecto, borrarProyecto, agregarProyecto };
 })();
 
 export default proyectoService;

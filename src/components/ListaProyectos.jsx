@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const ListaProyectos = ({ lista, funcion }) => {
   const handleFuncion = (id) => {
     funcion(id);
