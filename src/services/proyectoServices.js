@@ -14,9 +14,10 @@ const proyectoService = (() => {
     //Creamos un id para el nuevo proyecto
     nuevo.id = proyectos.length + 1;
     proyectos = [...proyectos, nuevo];
+    console.log(nuevo);
   };
 
-  const borrar = (id) => {
+  const borrarProyecto = (id) => {
     //El filtrado almacenara todos los elementos que no tengan el id ingresado
     proyectos = proyectos.filter((p) => p.id != id);
   };

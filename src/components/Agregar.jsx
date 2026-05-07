@@ -35,7 +35,13 @@ export const Agregar = ({ funcion, objeto }) => {
 
   return (
     <div className="cartaAgregar">
-      <form>
+      <form
+        id="nuevoProyecto"
+        action={(e) => {
+          setTitulo("");
+          setCategoria("");
+        }}
+      >
         <Bandeja funcion={setTitulo} state={titulo}>
           Titulo:
         </Bandeja>
@@ -67,10 +73,15 @@ export const Agregar = ({ funcion, objeto }) => {
             />
           </label>
         </div>
-        <button type="submit" onClick={handleFuncion} disabled={invalido}>
-          Agregar Proyecto
-        </button>
       </form>
+      <button
+        type="submit"
+        form="nuevoProyecto"
+        onClick={handleFuncion}
+        disabled={invalido}
+      >
+        Agregar Proyecto
+      </button>
     </div>
   );
 };
