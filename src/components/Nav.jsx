@@ -8,6 +8,7 @@ const ElementoNav = ({ children, link = "#", select }) => {
 
 export const Nav = ({ activo = "0" }) => {
   // Podemos elegir con ^ cual casilla va a estar activa
+  // Si no le asignamos un valor, ninguna casilla se activara
   return (
     <nav>
       <ElementoNav select={activo == "1" ? true : false}>Inicio</ElementoNav>
