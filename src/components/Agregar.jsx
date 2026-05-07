@@ -2,55 +2,51 @@ import { useEffect, useRef, useState } from "react";
 import { Bandeja } from "./Bandeja.jsx";
 
 export const Agregar = ({ funcion, objeto }) => {
-  const titulo = useRef("");
-  const categoria = useRef("");
+  const [titulo, setTitulo] = useState("");
+  const [categoria, setCategoria] = useState("");
   const [enProceso, setenProceso] = useState(false);
   const [finalizado, setFinalizado] = useState(false);
 
+  const reiniciar = () => {
+    setTitulo("");
+    setCategoria("");
+    setenProceso(false);
+    setFinalizado(false);
+  };
+
   const handleFuncion = () => {
-    if (titulo.current == "") {
+    if (titulo == "") {
       alert(`Ingrese un titulo`);
       return;
     }
-    if (categoria.current == "") {
+    if (categoria == "") {
       alert(`Ingrese una categoria`);
       return;
     }
     if (finalizado == false && finalizado == enProceso) {
-      alert(`Error en el estado`);
+      alert(`Tiene que ingresar un estado`);
       return;
     }
 
     let objeto = {
       id: -1,
-      titulo: titulo.current,
-      categoria: categoria.current,
+      titulo: titulo,
+      categoria: categoria,
       finalizado: finalizado,
     };
     funcion(objeto);
+    reiniciar();
   };
 
   return (
     <div className="cartaAgregar">
       <form>
-        <label>
+        <Bandeja funcion={setTitulo} state={titulo}>
           Titulo:
-          <input
-            type="text"
-            onChange={(e) => {
-              titulo.current = e.target.value;
-            }}
-          />
-        </label>
-        <label>
+        </Bandeja>
+        <Bandeja funcion={setCategoria} state={categoria}>
           Categoria:
-          <input
-            type="text"
-            onChange={(e) => {
-              categoria.current = e.target.value;
-            }}
-          />
-        </label>
+        </Bandeja>
       </form>
       <div>
         <label>

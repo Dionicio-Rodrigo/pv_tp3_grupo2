@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Bandeja = ({ children, funcion }) => {
+export const Bandeja = ({ children, funcion, state }) => {
   // La funcion que recibe busqueda se llamara
   // cuando el input cambie, mandando el valor de este
   const handleFuncion = (entrada) => {
@@ -9,7 +9,7 @@ export const Bandeja = ({ children, funcion }) => {
   return (
     <label className="Buscador">
       {children}
-      <input type="text" onChange={handleFuncion} />
+      <input type="text" value={state} onChange={handleFuncion} />
     </label>
   );
 };
