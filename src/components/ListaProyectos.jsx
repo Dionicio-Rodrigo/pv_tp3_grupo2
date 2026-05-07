@@ -2,7 +2,7 @@ import { useState } from "react";
 import proyectoService from "../services/proyectoServices.js";
 import { Busqueda } from "./Busqueda.jsx";
 
-function ListaProyectos() {
+export const ListaProyectos = () => {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),
   );
@@ -24,5 +24,4 @@ function ListaProyectos() {
       ))}
     </div>
   );
-}
-export default ListaProyectos;
+};
