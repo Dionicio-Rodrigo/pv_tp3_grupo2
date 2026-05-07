@@ -1,33 +1,29 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { Bandeja } from "./Bandeja.jsx";
 
 export const Agregar = ({ funcion, objeto }) => {
   const [titulo, setTitulo] = useState("");
   const [categoria, setCategoria] = useState("");
-  const [enProceso, setenProceso] = useState(false);
-  const [finalizado, setFinalizado] = useState(false);
+  const [finalizado, setFinalizado] = useState(undefined);
+  const [invalido, setinvalido] = useState(false);
 
-  const reiniciar = () => {
-    setTitulo("");
-    setCategoria("");
-    setenProceso(false);
-    setFinalizado(false);
-  };
-
-  const handleFuncion = () => {
+  useEffect(() => {
     if (titulo == "") {
-      alert(`Ingrese un titulo`);
+      setinvalido(true);
       return;
     }
     if (categoria == "") {
-      alert(`Ingrese una categoria`);
+      setinvalido(true);
       return;
     }
-    if (finalizado == false && finalizado == enProceso) {
-      alert(`Tiene que ingresar un estado`);
+    if (finalizado == undefined) {
+      setinvalido(true);
       return;
     }
+    setinvalido(false);
+  }, [titulo, categoria, finalizado]);
 
+  const handleFuncion = () => {
     let objeto = {
       id: -1,
       titulo: titulo,
@@ -35,7 +31,6 @@ export const Agregar = ({ funcion, objeto }) => {
       finalizado: finalizado,
     };
     funcion(objeto);
-    reiniciar();
   };
 
   return (
@@ -47,44 +42,35 @@ export const Agregar = ({ funcion, objeto }) => {
         <Bandeja funcion={setCategoria} state={categoria}>
           Categoria:
         </Bandeja>
-      </form>
-      <div>
-        <label>
-          En Proceso:
-          <input
-            type="checkbox"
-            id="enProceso"
-            checked={enProceso}
-            // Se podria cambiar por algo mas simple?
-            onChange={() => {
-              if (finalizado == true) {
+        <div id="Estados">
+          Estado:
+          <label>
+            En proceso
+            <input
+              type="radio"
+              name="estado"
+              id=""
+              onClick={() => {
                 setFinalizado(false);
-                setenProceso(!enProceso);
-              } else {
-                setenProceso(!enProceso);
-              }
-            }}
-          />
-        </label>
-        <label>
-          Finalizado:
-          <input
-            type="checkbox"
-            id="finalizado"
-            checked={finalizado}
-            // Se podria cambiar por algo mas simple?
-            onChange={() => {
-              if (enProceso == true) {
-                setenProceso(false);
-                setFinalizado(!finalizado);
-              } else {
-                setFinalizado(!finalizado);
-              }
-            }}
-          />
-        </label>
-      </div>
-      <button onClick={handleFuncion}>Agregar Proyecto</button>
+              }}
+            />
+          </label>
+          <label>
+            Finalizado
+            <input
+              type="radio"
+              name="estado"
+              id=""
+              onClick={() => {
+                setFinalizado(true);
+              }}
+            />
+          </label>
+        </div>
+        <button type="submit" onClick={handleFuncion} disabled={invalido}>
+          Agregar Proyecto
+        </button>
+      </form>
     </div>
   );
 };
