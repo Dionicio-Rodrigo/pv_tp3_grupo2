@@ -3,7 +3,7 @@ const proyectoService = (() => {
     { id: 1, titulo: "Proyecto1", categoria: "Taller", finalizado: true },
     { id: 2, titulo: "Proyecto2", categoria: "Comedor", finalizado: false },
     { id: 3, titulo: "Proyecto3", categoria: "Curso", finalizado: true },
-    { id: 1, titulo: "Proyecto4", categoria: "Taller", finalizado: false },
+    { id: 4, titulo: "Proyecto4", categoria: "Taller", finalizado: false },
   ];
 
   const obtenerProyectos = () => {
