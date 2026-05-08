@@ -11,9 +11,8 @@ const proyectoService = (() => {
   };
 
   const agregar = (nuevoProyecto) => {
-    const nuevo = { id: Date.now(), ...nuevoProyecto };
+    const nuevo = { id: proyectos.at(-1).id + 1, ...nuevoProyecto };
     proyectos = [...proyectos, nuevo];
-    return [...proyectos];
   };
 
   const filtrar = (texto) => {
@@ -25,8 +24,7 @@ const proyectoService = (() => {
 
   const eliminar = (id) => {
     proyectos = proyectos.filter((p) => p.id !== id);
-    return [...proyectos];
-  }
+  };
 
   return { obtenerProyectos, filtrar, eliminar, agregar };
 })();

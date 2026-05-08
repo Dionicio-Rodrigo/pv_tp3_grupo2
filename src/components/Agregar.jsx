@@ -25,7 +25,7 @@ export const AgregarProyecto = ({ funcion }) => {
     setInvalido(false);
   }, [nuevoProyecto]);
 
-  const handleAgregar = () => {
+  const handlefuncion = () => {
     funcion(nuevoProyecto);
   };
 
@@ -82,7 +82,7 @@ export const AgregarProyecto = ({ funcion }) => {
       <button
         form="datosEntrada"
         type="submit"
-        onClick={handleAgregar}
+        onClick={handlefuncion}
         disabled={invalido}
       >
         Agregar Proyecto
