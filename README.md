@@ -4,5 +4,5 @@
 
 ### Nombre y Apellido / Cuenta de github
 
-Dionicio Rodrigo Ezequiel / Dionicio-Rodrigo
+Dionicio Rodrigo Ezequiel / Dionicio-Rodrigo   
 Lucas Dario Joaquin Mamaní / Lucas4414
