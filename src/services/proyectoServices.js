@@ -10,6 +10,12 @@ const proyectoService = (() => {
     return [...proyectos];
   };
 
+  const agregar = (nuevoProyecto) => {
+    const nuevo = { id: Date.now(), ...nuevoProyecto };
+    proyectos = [...proyectos, nuevo];
+    return [...proyectos];
+  };
+
   const filtrar = (texto) => {
     let filtrado = proyectos.filter((p) =>
       p.titulo.toLowerCase().includes(texto.toLowerCase()),
@@ -17,7 +23,12 @@ const proyectoService = (() => {
     return filtrado;
   };
 
-  return { obtenerProyectos, filtrar };
+  const eliminar = (id) => {
+    proyectos = proyectos.filter((p) => p.id !== id);
+    return [...proyectos];
+  }
+
+  return { obtenerProyectos, filtrar, eliminar, agregar };
 })();
 
 export default proyectoService;
