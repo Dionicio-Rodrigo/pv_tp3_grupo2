@@ -6,4 +6,5 @@
 
 Dionicio Rodrigo Ezequiel / Dionicio-Rodrigo   
 Lucas Dario Joaquin Mamaní / Lucas4414  
-Cruz Benavidez Rita Melina / rmelinacruzb
+Cruz Benavidez Rita Melina / rmelinacruzb  
+Mamani Lucas Lautaro / lucasmamani-lxl  
