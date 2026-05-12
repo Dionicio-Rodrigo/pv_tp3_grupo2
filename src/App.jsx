@@ -6,6 +6,7 @@ import { ListaProyectos } from "./components/ListaProyectos.jsx";
 import { AgregarProyecto } from "./components/Agregar.jsx";
 import proyectoService from "./services/proyectoServices.js";
 import { Busqueda } from "./components/Busqueda.jsx";
+import "./css/App.css";
 
 function App() {
   const [proyectos, setProyectos] = useState(
@@ -29,9 +30,12 @@ function App() {
       <aside>
         {/*Busqueda puede recibir una funcion cualquiera*/
         /*Busqueda llamara a esa funcion cuando cambie */}
-        <Busqueda funcion={buscar}>Buscar:</Busqueda>
+        <Busqueda funcion={buscar}>
+          Buscar: <br />
+        </Busqueda>
       </aside>
       <main>
+        <h1>Nuestros Proyectos</h1>
         <AgregarProyecto funcion={agregar} />
         <ListaProyectos lista={[...proyectos]} funcion={eliminar} />
       </main>

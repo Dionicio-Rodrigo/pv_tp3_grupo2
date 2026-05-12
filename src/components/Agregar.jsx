@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import "../css/Agregar.css";
 
 export const AgregarProyecto = ({ funcion }) => {
   const [nuevoProyecto, setnuevoProyecto] = useState({
     titulo: "",
-    categoria: "",
+    categoria: "Taller",
     finalizado: undefined,
   });
 
@@ -11,10 +12,6 @@ export const AgregarProyecto = ({ funcion }) => {
 
   useEffect(() => {
     if (nuevoProyecto.titulo == "") {
-      setInvalido(true);
-      return;
-    }
-    if (nuevoProyecto.categoria == "") {
       setInvalido(true);
       return;
     }
@@ -27,21 +24,29 @@ export const AgregarProyecto = ({ funcion }) => {
 
   const handlefuncion = () => {
     funcion(nuevoProyecto);
+    setnuevoProyecto({
+      titulo: "",
+      categoria: "",
+      finalizado: undefined,
+    });
   };
 
   return (
     <div className="AgregarNuevo">
       <h2>Agregar Nuevo Proyecto</h2>
       <form action={() => {}} id="datosEntrada">
-        <input
-          type="text"
-          placeholder="Título"
-          onChange={(e) => {
-            setnuevoProyecto({ ...nuevoProyecto, titulo: e.target.value });
-          }}
-        />
         <label>
-          Categoria:
+          Titulo <br />
+          <input
+            type="text"
+            placeholder="Título"
+            onChange={(e) => {
+              setnuevoProyecto({ ...nuevoProyecto, titulo: e.target.value });
+            }}
+          />
+        </label>
+        <label>
+          Categoria <br />
           <select
             onChange={(e) => {
               setnuevoProyecto({ ...nuevoProyecto, categoria: e.target.value });
@@ -53,31 +58,27 @@ export const AgregarProyecto = ({ funcion }) => {
             <option value="Recaudacion">Recaudación</option>
           </select>
         </label>
-        <label>
-          Estado:
-          <label>
-            Finalizado
-            <input
-              type="radio"
-              name="estado"
-              id="finalizado"
-              onClick={(e) => {
-                setnuevoProyecto({ ...nuevoProyecto, finalizado: true });
-              }}
-            />
-          </label>
-          <label>
-            En Proceso
-            <input
-              type="radio"
-              name="estado"
-              id="enProceso"
-              onClick={(e) => {
-                setnuevoProyecto({ ...nuevoProyecto, finalizado: false });
-              }}
-            />
-          </label>
-        </label>
+        <div>
+          Estado <br />
+          <input
+            type="radio"
+            name="estado"
+            id="finalizado"
+            onClick={(e) => {
+              setnuevoProyecto({ ...nuevoProyecto, finalizado: true });
+            }}
+          />
+          <label htmlFor="finalizado">Finalizado</label>
+          <input
+            type="radio"
+            name="estado"
+            id="enProceso"
+            onClick={(e) => {
+              setnuevoProyecto({ ...nuevoProyecto, finalizado: false });
+            }}
+          />
+          <label htmlFor="enProceso">En Proceso</label>
+        </div>
       </form>
       <button
         form="datosEntrada"
