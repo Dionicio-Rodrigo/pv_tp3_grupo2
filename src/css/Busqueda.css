@@ -1,0 +1,12 @@
+#Buscador {
+  text-align: center;
+}
+#Buscador > input {
+  border-radius: 4px;
+  width: 90%;
+  border: solid 2px var(--Negro);
+  padding: 0.25em;
+  background-color: var(--Blanco);
+  border: none;
+  font-size: 1rem;
+}
