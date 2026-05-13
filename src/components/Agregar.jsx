@@ -26,7 +26,7 @@ export const AgregarProyecto = ({ funcion }) => {
     funcion(nuevoProyecto);
     setnuevoProyecto({
       titulo: "",
-      categoria: "",
+      categoria: "Taller",
       finalizado: undefined,
     });
   };
