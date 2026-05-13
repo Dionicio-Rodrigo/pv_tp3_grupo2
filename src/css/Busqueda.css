@@ -1,5 +1,7 @@
 #Buscador {
   text-align: center;
+  position: sticky;
+  top: 0;
 }
 #Buscador > input {
   border-radius: 4px;
