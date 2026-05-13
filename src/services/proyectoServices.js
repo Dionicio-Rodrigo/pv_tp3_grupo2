@@ -1,9 +1,30 @@
 const proyectoService = (() => {
   let proyectos = [
-    { id: 1, titulo: "Proyecto1", categoria: "Taller", finalizado: true },
-    { id: 2, titulo: "Proyecto2", categoria: "Comedor", finalizado: false },
-    { id: 3, titulo: "Proyecto3", categoria: "Curso", finalizado: true },
-    { id: 4, titulo: "Proyecto4", categoria: "Taller", finalizado: false },
+    {
+      id: 1,
+      titulo: "Sistema de Riego Automatizados",
+      categoria: "Taller",
+      finalizado: true,
+    },
+    { id: 2, titulo: "Taller de SQL", categoria: "Taller", finalizado: false },
+    {
+      id: 3,
+      titulo: "Nutrición con Energía",
+      categoria: "Comedor",
+      finalizado: false,
+    },
+    {
+      id: 4,
+      titulo: "Probabilidad en Acción",
+      categoria: "Recaudación",
+      finalizado: true,
+    },
+    {
+      id: 5,
+      titulo: "Impresion 3D y Prototipado Rápido",
+      categoria: "Curso",
+      finalizado: false,
+    },
   ];
 
   const obtenerProyectos = () => {
