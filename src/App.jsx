@@ -37,7 +37,7 @@ function App() {
       <main>
         <h1>Nuestros Proyectos</h1>
         <AgregarProyecto funcion={agregar} />
-        <ListaProyectos lista={[...proyectos]} funcion={eliminar} />
+        <ListaProyectos lista={proyectos} funcion={eliminar} />
       </main>
       <Footer />
     </>
