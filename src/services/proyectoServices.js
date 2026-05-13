@@ -32,8 +32,10 @@ const proyectoService = (() => {
   };
 
   const agregar = (nuevoProyecto) => {
-    const nuevo = { id: proyectos.at(-1).id + 1, ...nuevoProyecto };
-    proyectos = [...proyectos, nuevo];
+    let nuevo_id = 1;
+    if (proyectos.length > 0) nuevo_id = proyectos.at(-1).id + 1;
+    nuevoProyecto = { id: nuevo_id, ...nuevoProyecto };
+    proyectos = [...proyectos, nuevoProyecto];
   };
 
   const filtrar = (texto) => {
