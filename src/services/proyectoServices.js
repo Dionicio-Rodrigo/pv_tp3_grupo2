@@ -31,25 +31,30 @@ const proyectoService = (() => {
     return [...proyectos];
   };
 
-  const agregar = (nuevoProyecto) => {
+  const agregarProyecto = (nuevoProyecto) => {
     let nuevo_id = 1;
     if (proyectos.length > 0) nuevo_id = proyectos.at(-1).id + 1;
     nuevoProyecto = { id: nuevo_id, ...nuevoProyecto };
     proyectos = [...proyectos, nuevoProyecto];
   };
 
-  const filtrar = (texto) => {
+  const buscarProyecto = (texto) => {
     let filtrado = proyectos.filter((p) =>
       p.titulo.toLowerCase().includes(texto.toLowerCase()),
     );
     return filtrado;
   };
 
-  const eliminar = (id) => {
+  const eliminarProyecto = (id) => {
     proyectos = proyectos.filter((p) => p.id !== id);
   };
 
-  return { obtenerProyectos, filtrar, eliminar, agregar };
+  return {
+    obtenerProyectos,
+    buscarProyecto,
+    eliminarProyecto,
+    agregarProyecto,
+  };
 })();
 
 export default proyectoService;
