@@ -13,14 +13,14 @@ function App() {
     proyectoService.obtenerProyectos(),
   );
   const buscar = (texto) => {
-    setProyectos(proyectoService.filtrar(texto));
+    setProyectos(proyectoService.buscarProyecto(texto));
   };
   const agregar = (nuevoProyecto) => {
-    proyectoService.agregar(nuevoProyecto);
+    proyectoService.agregarProyecto(nuevoProyecto);
     setProyectos(proyectoService.obtenerProyectos());
   };
   const eliminar = (id) => {
-    proyectoService.eliminar(id);
+    proyectoService.eliminarProyecto(id);
     setProyectos(proyectoService.obtenerProyectos());
   };
   return (
@@ -28,16 +28,14 @@ function App() {
       <Header />
       <Nav activo="2" />
       <aside>
-        {/*Busqueda puede recibir una funcion cualquiera*/
-        /*Busqueda llamara a esa funcion cuando cambie */}
         <Busqueda funcion={buscar}>
           Buscar: <br />
         </Busqueda>
       </aside>
       <main>
         <h1>Nuestros Proyectos</h1>
-        <AgregarProyecto funcion={agregar} />
         <ListaProyectos lista={proyectos} funcion={eliminar} />
+        <AgregarProyecto funcion={agregar} />
       </main>
       <Footer />
     </>
