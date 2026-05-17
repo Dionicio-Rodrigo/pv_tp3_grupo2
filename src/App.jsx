@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { Footer } from "./components/Footer.jsx";
 import { Header } from "./components/Header.jsx";
 import { Nav } from "./components/Nav.jsx";
@@ -13,6 +13,8 @@ function App() {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),
   );
+  const [home, setHome] = useState(true);
+
   const buscar = (texto) => {
     setProyectos(proyectoService.buscarProyecto(texto));
   };
@@ -24,29 +26,44 @@ function App() {
     proyectoService.eliminarProyecto(id);
     setProyectos(proyectoService.obtenerProyectos());
   };
+
+  const cambiarPagina = (id) => {
+    console.log(id);
+
+    setHome(!home);
+  };
+
   return (
-  <>
-    <Header />
-    <Nav activo="2" />
+    <>
+      <Header />
+      <Nav activo="2" />
 
-    <aside>
-      <Busqueda funcion={buscar}>
-        Buscar: <br />
-      </Busqueda>
-    </aside>
+      <aside>
+        <Busqueda funcion={buscar}>
+          Buscar: <br />
+        </Busqueda>
+      </aside>
 
-    <main>
-      <h1>Nuestros Proyectos</h1>
+      {home == true ? (
+        <main>
+          <h1>Nuestros Proyectos</h1>
 
-      <ListaProyectos lista={proyectos} funcion={eliminar} />
+          <ListaProyectos
+            lista={proyectos}
+            eliminar={eliminar}
+            detalles={cambiarPagina}
+          />
 
-      <DetalleProyecto proyecto={proyectos[0]} /> 
+          <AgregarProyecto funcion={agregar} />
+        </main>
+      ) : (
+        <main>
+          <h2>Hola</h2>
+        </main>
+      )}
 
-      <AgregarProyecto funcion={agregar} />
-    </main>
-
-    <Footer />
-  </>
-);
+      <Footer />
+    </>
+  );
 }
 export default App;
