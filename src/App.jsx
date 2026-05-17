@@ -7,6 +7,7 @@ import { AgregarProyecto } from "./components/Agregar.jsx";
 import proyectoService from "./services/proyectoServices.js";
 import { Busqueda } from "./components/Busqueda.jsx";
 import "./css/App.css";
+import { DetalleProyecto } from "./components/DetalleProyecto.jsx";
 
 function App() {
   const [proyectos, setProyectos] = useState(
@@ -24,21 +25,28 @@ function App() {
     setProyectos(proyectoService.obtenerProyectos());
   };
   return (
-    <>
-      <Header />
-      <Nav activo="2" />
-      <aside>
-        <Busqueda funcion={buscar}>
-          Buscar: <br />
-        </Busqueda>
-      </aside>
-      <main>
-        <h1>Nuestros Proyectos</h1>
-        <ListaProyectos lista={proyectos} funcion={eliminar} />
-        <AgregarProyecto funcion={agregar} />
-      </main>
-      <Footer />
-    </>
-  );
+  <>
+    <Header />
+    <Nav activo="2" />
+
+    <aside>
+      <Busqueda funcion={buscar}>
+        Buscar: <br />
+      </Busqueda>
+    </aside>
+
+    <main>
+      <h1>Nuestros Proyectos</h1>
+
+      <ListaProyectos lista={proyectos} funcion={eliminar} />
+
+      <DetalleProyecto proyecto={proyectos[0]} /> 
+
+      <AgregarProyecto funcion={agregar} />
+    </main>
+
+    <Footer />
+  </>
+);
 }
 export default App;
