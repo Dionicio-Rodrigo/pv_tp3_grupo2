@@ -1,6 +1,30 @@
 import { useState } from "react";
 import { Borrado } from "./Borrado.jsx";
 import "../css/ListaProyectos.css";
+import { ProyectoCard } from "./ProyectoCard.jsx";
+
+export const ListaProyectos = ({ lista, funcion }) => {
+  const handlefuncion = (id) => {
+    funcion(id);
+  };
+
+  return (
+    <div className="contenedor">
+      {lista.map((proyecto) => (
+        <ProyectoCard
+          key={proyecto.id}
+          proyecto={proyecto}
+          funcion={funcion}
+        />
+      ))}
+    </div>
+  );
+};
+/*
+import { useState } from "react";
+import { Borrado } from "./Borrado.jsx";
+import "../css/ListaProyectos.css";
+import { ProyectoCard } from "./ProyectoCard.jsx";
 
 export const ListaProyectos = ({ lista, funcion }) => {
   const handlefuncion = (id) => {
@@ -31,3 +55,4 @@ export const ListaProyectos = ({ lista, funcion }) => {
     </div>
   );
 };
+*/
