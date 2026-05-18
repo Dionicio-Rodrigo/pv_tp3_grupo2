@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import "../css/Agregar.css";
+import { AgregarDetalles } from "./AgregarDetalles";
 
 export const AgregarProyecto = ({ funcion }) => {
   const [nuevoProyecto, setnuevoProyecto] = useState({
     titulo: "",
     categoria: "Taller",
     finalizado: undefined,
-
     detalles: {
       descripcion: "",
       recursos: [],
@@ -16,6 +16,10 @@ export const AgregarProyecto = ({ funcion }) => {
   });
 
   const [invalido, setInvalido] = useState(true);
+
+  const handleActualizar = (detalles) => {
+    setnuevoProyecto({ ...nuevoProyecto, detalles: { ...detalles } });
+  };
 
   useEffect(() => {
     if (nuevoProyecto.titulo === "") {
@@ -31,6 +35,7 @@ export const AgregarProyecto = ({ funcion }) => {
 
   const handlefuncion = () => {
     funcion(nuevoProyecto);
+    console.log(nuevoProyecto);
     setnuevoProyecto({
       titulo: "",
       categoria: "Taller",
@@ -108,85 +113,7 @@ export const AgregarProyecto = ({ funcion }) => {
           />
           <label htmlFor="enProceso">En Proceso</label>
         </div>
-        <div id="agregarDetalles">
-          <label>
-            Descripción
-            <br />
-            <textarea
-              placeholder="Descripción del proyecto"
-              onChange={(e) => {
-                setnuevoProyecto({
-                  ...nuevoProyecto,
-
-                  detalles: {
-                    ...nuevoProyecto.detalles,
-                    descripcion: e.target.value,
-                  },
-                });
-              }}
-            />
-          </label>
-
-          <label>
-            Recursos
-            <br />
-            <input
-              type="text"
-              placeholder="PDF, Drive, GitHub"
-              onChange={(e) => {
-                setnuevoProyecto({
-                  ...nuevoProyecto,
-
-                  detalles: {
-                    ...nuevoProyecto.detalles,
-
-                    recursos: e.target.value.split(","),
-                  },
-                });
-              }}
-            />
-          </label>
-
-          <label>
-            Integrante
-            <br />
-            <input
-              type="text"
-              placeholder="Nombre"
-              onChange={(e) => {
-                setnuevoProyecto({
-                  ...nuevoProyecto,
-
-                  detalles: {
-                    ...nuevoProyecto.detalles,
-
-                    equipo: [e.target.value],
-                  },
-                });
-              }}
-            />
-          </label>
-
-          <label>
-            Rol
-            <br />
-            <input
-              type="text"
-              placeholder="Rol"
-              onChange={(e) => {
-                setnuevoProyecto({
-                  ...nuevoProyecto,
-
-                  detalles: {
-                    ...nuevoProyecto.detalles,
-
-                    roles: [e.target.value],
-                  },
-                });
-              }}
-            />
-          </label>
-        </div>
+        <AgregarDetalles actualizar={handleActualizar} />
       </form>
       <button
         form="datosEntrada"
