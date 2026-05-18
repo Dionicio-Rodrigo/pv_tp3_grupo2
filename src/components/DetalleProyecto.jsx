@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import proyectoService from "../services/proyectoServices";
 export const DetalleProyecto = ({ idProyecto, onCambiarPagina }) => {
   const proyecto = proyectoService.obtenerDetalles(idProyecto);
-
   return (
     <section>
       <button

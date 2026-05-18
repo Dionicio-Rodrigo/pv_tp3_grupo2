@@ -70,18 +70,83 @@ const proyectoService = (() => {
       titulo: "Nutrición con Energía",
       categoria: "Comedor",
       finalizado: false,
+      detalles: {
+        descripcion: `El proyecto Nutrición con Energía es una iniciativa de economía circular 
+        gestionada íntegramente por estudiantes, diseñada para combatir la inseguridad alimentaria mediante 
+        la provisión de almuerzos balanceados a precios accesibles. Su pilar fundamental es un sistema de reservaciones digital, 
+        desarrollado por los propios alumnos, que permite predecir la demanda exacta de cada jornada, eliminando 
+        la incertidumbre en las compras y reduciendo el desperdicio de alimentos a prácticamente cero.`,
+        recursos: [
+          `Sistema de reservaciones - Manual de uso (PDF)`,
+          `Repositorio del sistema en GitHub`,
+          `Planillas de seguimiento nutricional (Drive)`,
+          `Acta de acuerdo con el comedor universitario (Drive)`,
+        ],
+        equipo: [`Andrea Yapura`, `Facundo Chauque`, `Miriam Gallardo`],
+        roles: [
+          `Coordinadora general e inclusión`,
+          `Logística de insumos`,
+          `Diseño del sistema rotativo`,
+        ],
+      },
     },
     {
       id: 4,
       titulo: "Probabilidad en Acción",
       categoria: "Recaudación",
       finalizado: true,
+      detalles: {
+        descripcion: `La Lotería Universitaria "Probabilidad en Acción" 
+        es una iniciativa organizada por los estudiantes con el objetivo de recaudar fondos para mejorar el equipamiento 
+        y los materiales de los laboratorios. Lo que hace especial a este proyecto es que los propios alumnos desarrollan 
+        el software encargado del sorteo, utilizando algoritmos que aseguran que la selección de los ganadores sea totalmente 
+        aleatoria, justa y transparente para todos los participantes.`,
+        recursos: [
+          `Código fuente del software de sorteo (GitHub)`,
+          `Informe de estudio de probabilidades (PDF)`,
+          `Reglamento de la lotería (Drive)`,
+          `Rendición de cuentas y destino de fondos (Drive)`,
+        ],
+        equipo: [
+          `Nicolás Herrera`,
+          `Jimena Cabrera`,
+          `Tomás Arroyo`,
+          `Dante Vilca`,
+        ],
+        roles: [
+          `Coordinador y administración de fondos`,
+          `Diseño y venta de boletos`,
+          `Selección y gestión de premios`,
+          `Estudio de probabilidades y estadística`,
+        ],
+      },
     },
     {
       id: 5,
       titulo: "Impresion 3D y Prototipado Rápido",
       categoria: "Curso",
       finalizado: false,
+      detalles: {
+        descripcion: `Este espacio de capacitación práctica tiene como objetivo que los
+          estudiantes de ingeniería aprendan a calibrar impresoras FDM y a
+          utilizar software de laminado para convertir sus diseños CAD en
+          modelos físicos reales. El taller cubre desde los conceptos básicos
+          de la tecnología de deposición de material fundido hasta la
+          optimización de parámetros de impresión como temperatura, velocidad,
+          relleno y soportes.`,
+        recursos: [
+          `Guía de calibración de impresoras FDM (PDF)`,
+          `Modelos de ejemplo en repositorio (GitHub)`,
+          `Tutoriales de software de laminado (Drive)`,
+          `Galería de prototipos realizados (Drive)`,
+        ],
+        equipo: [`Lucía Mamani`, `Rodrigo Condorí`, `Martin Fernandez`],
+        roles: [
+          `Coordinadora del taller`,
+          `Técnico de equipos e impresoras`,
+          `Instructor de software CAD y laminado`,
+        ],
+      },
     },
   ];
   const obtenerProyectos = () => {
