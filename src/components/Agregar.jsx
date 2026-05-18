@@ -3,9 +3,7 @@ import "../css/Agregar.css";
 import { AgregarDetalles } from "./AgregarDetalles";
 
 export const AgregarProyecto = ({ funcion }) => {
-
   const [nuevoProyecto, setnuevoProyecto] = useState({
-
     titulo: "",
     categoria: "Taller",
     finalizado: undefined,
@@ -14,9 +12,8 @@ export const AgregarProyecto = ({ funcion }) => {
       descripcion: "",
       recursos: [],
       equipo: [],
-      roles: []
-    }
-
+      roles: [],
+    },
   });
 
   const [invalido, setInvalido] = useState(true);
@@ -26,7 +23,6 @@ export const AgregarProyecto = ({ funcion }) => {
   };
 
   useEffect(() => {
-
     if (nuevoProyecto.titulo === "") {
       setInvalido(true);
       return;
@@ -38,15 +34,12 @@ export const AgregarProyecto = ({ funcion }) => {
     }
 
     setInvalido(false);
-
   }, [nuevoProyecto]);
 
   const handlefuncion = () => {
-
     funcion(nuevoProyecto);
 
     setnuevoProyecto({
-
       titulo: "",
       categoria: "Taller",
       finalizado: undefined,
@@ -55,35 +48,27 @@ export const AgregarProyecto = ({ funcion }) => {
         descripcion: "",
         recursos: [],
         equipo: [],
-        roles: []
-      }
-
+        roles: [],
+      },
     });
   };
 
   return (
-
     <div className="AgregarNuevo">
-
       <h2>Agregar Nuevo Proyecto</h2>
 
       <form action={() => {}} id="datosEntrada">
-
         <label>
           Titulo
           <br />
-
           <input
             type="text"
             placeholder="Título"
-
             onChange={(e) => {
-
               setnuevoProyecto({
                 ...nuevoProyecto,
-                titulo: e.target.value
+                titulo: e.target.value,
               });
-
             }}
           />
         </label>
@@ -91,18 +76,13 @@ export const AgregarProyecto = ({ funcion }) => {
         <label>
           Categoria
           <br />
-
           <select
-
             onChange={(e) => {
-
               setnuevoProyecto({
                 ...nuevoProyecto,
-                categoria: e.target.value
+                categoria: e.target.value,
               });
-
             }}
-
           >
             <option value="Taller">Taller</option>
             <option value="Comedor">Comedor</option>
@@ -110,162 +90,35 @@ export const AgregarProyecto = ({ funcion }) => {
             <option value="Recaudacion">Recaudación</option>
           </select>
         </label>
-
-        <label>
-          Descripción
-          <br />
-
-          <textarea
-            placeholder="Descripción del proyecto"
-
-            onChange={(e) => {
-
-              setnuevoProyecto({
-
-                ...nuevoProyecto,
-
-                detalles: {
-                  ...nuevoProyecto.detalles,
-                  descripcion: e.target.value
-                }
-
-              });
-
-            }}
-          />
-        </label>
-
-        <label>
-          Recursos
-          <br />
-
-          <input
-            type="text"
-            placeholder="PDF, Drive, GitHub"
-
-            onChange={(e) => {
-
-              setnuevoProyecto({
-
-                ...nuevoProyecto,
-
-                detalles: {
-
-                  ...nuevoProyecto.detalles,
-
-                  recursos: e.target.value.split(",")
-
-                }
-
-              });
-
-            }}
-          />
-        </label>
-
-        <label>
-          Integrante
-          <br />
-
-          <input
-            type="text"
-            placeholder="Nombre"
-
-            onChange={(e) => {
-
-              setnuevoProyecto({
-
-                ...nuevoProyecto,
-
-                detalles: {
-
-                  ...nuevoProyecto.detalles,
-
-                  equipo: [e.target.value]
-
-                }
-
-              });
-
-            }}
-          />
-        </label>
-
-        <label>
-          Rol
-          <br />
-
-          <input
-            type="text"
-            placeholder="Rol"
-
-            onChange={(e) => {
-
-              setnuevoProyecto({
-
-                ...nuevoProyecto,
-
-                detalles: {
-
-                  ...nuevoProyecto.detalles,
-
-                  roles: [e.target.value]
-
-                }
-
-              });
-
-            }}
-          />
-        </label>
-
         <div>
-
           Estado
           <br />
-
           <input
             type="radio"
             name="estado"
             id="finalizado"
-
             onClick={() => {
-
               setnuevoProyecto({
                 ...nuevoProyecto,
-                finalizado: true
+                finalizado: true,
               });
-
             }}
           />
-
-          <label htmlFor="finalizado">
-            Finalizado
-          </label>
-
+          <label htmlFor="finalizado">Finalizado</label>
           <input
             type="radio"
             name="estado"
             id="enProceso"
-
             onClick={() => {
-
               setnuevoProyecto({
                 ...nuevoProyecto,
-                finalizado: false
+                finalizado: false,
               });
-
             }}
           />
-
-          <label htmlFor="enProceso">
-            En Proceso
-          </label>
-
+          <label htmlFor="enProceso">En Proceso</label>
         </div>
-
       </form>
-
       <button
         form="datosEntrada"
         type="submit"
@@ -274,7 +127,24 @@ export const AgregarProyecto = ({ funcion }) => {
       >
         Agregar Proyecto
       </button>
-
+      <div id="detalles">
+        <h3>Agregar Detalles</h3>
+        <AgregarDetalles actualizar={handleActualizar} />
+        <div id="cantidades">
+          <span id="recursos">
+            Recursos Añadidos:
+            {nuevoProyecto.detalles.recursos.length > 0
+              ? ` ${nuevoProyecto.detalles.recursos.length}`
+              : ` 0 `}
+          </span>
+          <span id="equipo">
+            Integrantes Añadido:
+            {nuevoProyecto.detalles.equipo.length > 0
+              ? ` ${nuevoProyecto.detalles.equipo.length}`
+              : ` 0 `}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

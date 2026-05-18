@@ -76,7 +76,7 @@ export const AgregarDetalles = ({ actualizar }) => {
       </div>
       <div>
         <label htmlFor="seccionEquipo">Equipo</label>
-        <section id="seccionEquipo">
+        <div id="seccionEquipo">
           <div>
             <label htmlFor="bandejaNombre">Nombre: </label>
             <input
@@ -106,7 +106,7 @@ export const AgregarDetalles = ({ actualizar }) => {
               }}
             />
           </div>
-        </section>
+        </div>
         <button
           type="button"
           className="btnAgregarDetalles"
