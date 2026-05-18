@@ -22,19 +22,19 @@ function App() {
     setProyectos(proyectoService.buscarProyecto(texto));
   };
   const agregar = (nuevoProyecto) => {
-    nuevoMensaje.current = nuevoProyecto;
+    nuevoMensaje.current = "Agregado";
     proyectoService.agregarProyecto(nuevoProyecto);
     setProyectos(proyectoService.obtenerProyectos());
   };
   const eliminar = (id) => {
-    nuevoMensaje.current = id;
+    nuevoMensaje.current = "Eliminad";
     proyectoService.eliminarProyecto(id);
     setProyectos(proyectoService.obtenerProyectos());
   };
 
   useEffect(() => {
     setTiempo(new Date());
-  }, [nuevoMensaje]);
+  }, [nuevoMensaje.current]);
 
   const cambiarPagina = (id) => {
     if (id != undefined) {
@@ -67,7 +67,7 @@ function App() {
             detalles={cambiarPagina}
           />
           {nuevoMensaje.current != "" ? (
-            <RegistroActividad fecha={tiempo} />
+            <RegistroActividad fecha={tiempo} mensaje={nuevoMensaje.current} />
           ) : (
             <></>
           )}

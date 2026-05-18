@@ -1,8 +1,10 @@
-export const RegistroActividad = ({ tiempo }) => {
+export const RegistroActividad = ({ tiempo, mensaje }) => {
   return (
     <div>
       <p>
-        Ultima actualización de la lista:{` `}
+        {mensaje == "Agregado"
+          ? `Se agrego un nuevo proyecto a las `
+          : `Se elimino un proyecto a las `}
         {new Intl.DateTimeFormat("es-AR", {
           day: "2-digit",
           month: "2-digit",
