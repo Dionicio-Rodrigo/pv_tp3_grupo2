@@ -25,9 +25,6 @@
   display: flex;
 }
 
-#seccionEquipo > div > input[type="text"] {
-}
-
 #bandejaDescripcion {
   width: 100%;
   height: 100%;
