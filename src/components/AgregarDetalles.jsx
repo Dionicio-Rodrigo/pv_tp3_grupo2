@@ -46,6 +46,7 @@ export const AgregarDetalles = ({ actualizar }) => {
       <div id="seccionRecursos">
         <label htmlFor="bandejaRecurso">
           Recursos
+          {detalles.recursos.length > 0 ? `: ${detalles.recursos.length}` : ``}
           <br />
         </label>
         <input
@@ -75,8 +76,12 @@ export const AgregarDetalles = ({ actualizar }) => {
         </button>
       </div>
       <div>
-        <label htmlFor="seccionEquipo">Equipo</label>
-        <section id="seccionEquipo">
+        <label htmlFor="seccionEquipo">
+          {detalles.equipo.length > 0
+            ? `Integrantes: ${detalles.equipo.length}`
+            : `Equipo`}
+        </label>
+        <div id="seccionEquipo">
           <div>
             <label htmlFor="bandejaNombre">Nombre: </label>
             <input
@@ -106,7 +111,7 @@ export const AgregarDetalles = ({ actualizar }) => {
               }}
             />
           </div>
-        </section>
+        </div>
         <button
           type="button"
           className="btnAgregarDetalles"
