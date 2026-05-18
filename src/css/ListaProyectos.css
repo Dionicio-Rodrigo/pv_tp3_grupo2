@@ -46,7 +46,8 @@
 .card > .categoria-estado > .estado-enProceso {
   background-color: var(--Celeste);
 }
-.btn-borrar {
+.btn-borrar,
+.btn-detalles {
   margin-top: 0.5em;
   padding: 10px 20px;
   align-self: center;
@@ -59,10 +60,12 @@
   font-weight: bold;
 }
 
-.btn-borrar:hover {
+.btn-borrar:hover,
+.btn-detalles:hover {
   background-color: var(--luz-filtros);
 }
 
-.btn-borrar:active {
+.btn-borrar:active,
+.btn-detalles:active {
   box-shadow: 2px 2px var(--Negro) inset;
 }
