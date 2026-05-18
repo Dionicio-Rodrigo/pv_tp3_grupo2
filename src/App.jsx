@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { Footer } from "./components/Footer.jsx";
 import { Header } from "./components/Header.jsx";
 import { Nav } from "./components/Nav.jsx";
@@ -8,26 +8,33 @@ import proyectoService from "./services/proyectoServices.js";
 import { Busqueda } from "./components/Busqueda.jsx";
 import "./css/App.css";
 import { DetalleProyecto } from "./components/DetalleProyecto.jsx";
+import { RegistroActividad } from "./components/RegistroActividad.jsx";
 
 function App() {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),
   );
   const [home, setHome] = useState(true);
-
   const [idDetalles, setIdDetalles] = useState(1);
-
+  const [tiempo, setTiempo] = useState(null);
+  const nuevoMensaje = useRef("");
   const buscar = (texto) => {
     setProyectos(proyectoService.buscarProyecto(texto));
   };
   const agregar = (nuevoProyecto) => {
+    nuevoMensaje.current = nuevoProyecto;
     proyectoService.agregarProyecto(nuevoProyecto);
     setProyectos(proyectoService.obtenerProyectos());
   };
   const eliminar = (id) => {
+    nuevoMensaje.current = id;
     proyectoService.eliminarProyecto(id);
     setProyectos(proyectoService.obtenerProyectos());
   };
+
+  useEffect(() => {
+    setTiempo(new Date());
+  }, [nuevoMensaje]);
 
   const cambiarPagina = (id) => {
     if (id != undefined) {
@@ -59,7 +66,11 @@ function App() {
             eliminar={eliminar}
             detalles={cambiarPagina}
           />
-
+          {nuevoMensaje.current != "" ? (
+            <RegistroActividad fecha={tiempo} />
+          ) : (
+            <></>
+          )}
           <AgregarProyecto funcion={agregar} />
         </main>
       ) : (
