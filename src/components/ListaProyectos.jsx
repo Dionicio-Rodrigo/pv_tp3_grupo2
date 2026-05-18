@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Borrado } from "./Borrado.jsx";
 import "../css/ListaProyectos.css";
 import { ProyectoCard } from "./ProyectoCard.jsx";
 
