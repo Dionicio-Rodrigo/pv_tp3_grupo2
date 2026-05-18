@@ -14,10 +14,18 @@
 }
 
 #seccionEquipo {
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
+}
+
+#seccionEquipo > div {
+  display: flex;
+}
+
+#seccionEquipo > div > input[type="text"] {
 }
 
 #bandejaDescripcion {

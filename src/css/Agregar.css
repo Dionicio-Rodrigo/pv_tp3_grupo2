@@ -111,3 +111,26 @@ button[type="submit"]:disabled {
   box-shadow: none;
   border: none;
 }
+
+#detalles > h3 {
+  text-align: center;
+  margin: 0;
+  padding: 3px;
+  border-bottom: 2px solid var(--Celeste);
+  margin-bottom: 1em;
+}
+
+#cantidades {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+#cantidades > span {
+  color: var(--Blanco);
+  border-radius: 6px;
+  padding: 0.5em;
+  align-self: center;
+  font-size: 0.9rem;
+  background-color: var(--Celeste);
+}

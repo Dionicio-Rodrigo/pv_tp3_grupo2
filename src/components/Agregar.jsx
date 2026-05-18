@@ -114,7 +114,6 @@ export const AgregarProyecto = ({ funcion }) => {
           <label htmlFor="enProceso">En Proceso</label>
         </div>
       </form>
-      <AgregarDetalles actualizar={handleActualizar} />
       <button
         form="datosEntrada"
         type="submit"
@@ -123,6 +122,24 @@ export const AgregarProyecto = ({ funcion }) => {
       >
         Agregar Proyecto
       </button>
+      <div id="detalles">
+        <h3>Agregar Detalles</h3>
+        <AgregarDetalles actualizar={handleActualizar} />
+        <div id="cantidades">
+          <span id="recursos">
+            Recursos Añadidos:
+            {nuevoProyecto.detalles.recursos.length > 0
+              ? ` ${nuevoProyecto.detalles.recursos.length}`
+              : ` 0 `}
+          </span>
+          <span id="equipo">
+            Integrantes Añadido:
+            {nuevoProyecto.detalles.equipo.length > 0
+              ? ` ${nuevoProyecto.detalles.equipo.length}`
+              : ` 0 `}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
