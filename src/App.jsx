@@ -18,7 +18,11 @@ function App() {
   const [idDetalles, setIdDetalles] = useState(1);
   const [tiempo, setTiempo] = useState(null);
   const nuevoMensaje = useRef("");
+  const [activarMensaje, setActivarMensaje] = useState(false);
+
   const buscar = (texto) => {
+    if (texto == "") setActivarMensaje(false);
+    if (texto != "") setActivarMensaje(true);
     setProyectos(proyectoService.buscarProyecto(texto));
   };
   const agregar = (nuevoProyecto) => {
@@ -27,7 +31,7 @@ function App() {
     setProyectos(proyectoService.obtenerProyectos());
   };
   const eliminar = (id) => {
-    nuevoMensaje.current = "Eliminad";
+    nuevoMensaje.current = "Eliminado";
     proyectoService.eliminarProyecto(id);
     setProyectos(proyectoService.obtenerProyectos());
   };
@@ -66,7 +70,7 @@ function App() {
             eliminar={eliminar}
             detalles={cambiarPagina}
           />
-          {nuevoMensaje.current != "" ? (
+          {nuevoMensaje.current != "" && !activarMensaje ? (
             <RegistroActividad fecha={tiempo} mensaje={nuevoMensaje.current} />
           ) : (
             <></>
