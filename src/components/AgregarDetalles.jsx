@@ -29,8 +29,6 @@ export const AgregarDetalles = ({ actualizar }) => {
     else setBtnIntegrante(false);
   }, [entradas]);
 
-  console.log(entradas);
-
   return (
     <fieldset id="agregarDetalles">
       <div id="seccionDescripcion">
