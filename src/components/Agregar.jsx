@@ -113,8 +113,8 @@ export const AgregarProyecto = ({ funcion }) => {
           />
           <label htmlFor="enProceso">En Proceso</label>
         </div>
-        <AgregarDetalles actualizar={handleActualizar} />
       </form>
+      <AgregarDetalles actualizar={handleActualizar} />
       <button
         form="datosEntrada"
         type="submit"

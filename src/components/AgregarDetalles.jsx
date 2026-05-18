@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import "../css/AgregarDetalles.css";
 
 export const AgregarDetalles = ({ actualizar }) => {
   const [detalles, setDetalles] = useState({
@@ -32,36 +33,37 @@ export const AgregarDetalles = ({ actualizar }) => {
 
   return (
     <fieldset id="agregarDetalles">
-      <div>
-        <label>
-          Descripción
-          <br />
-          <textarea
-            placeholder="Descripción del proyecto"
-            name="descripcion"
-            value={detalles.descripcion}
-            onInput={(e) => {
-              setDetalles({ ...detalles, descripcion: e.target.value });
-            }}
-          />
-        </label>
+      <div id="seccionDescripcion">
+        <label htmlFor="bandejaDescripcion">Descripción</label>
+        <textarea
+          placeholder="Descripción del proyecto"
+          id="bandejaDescripcion"
+          name="descripcion"
+          value={detalles.descripcion}
+          onInput={(e) => {
+            setDetalles({ ...detalles, descripcion: e.target.value });
+          }}
+        />
       </div>
-      <div>
-        <label>
+      <div id="seccionRecursos">
+        <label htmlFor="bandejaRecurso">
           Recursos
           {detalles.recursos.length > 0 ? `: ${detalles.recursos.length}` : ``}
           <br />
-          <input
-            type="text"
-            placeholder="PDF, Drive, GitHub"
-            name="recurso"
-            value={entradas.recurso}
-            onChange={(e) => {
-              setEntradas({ ...entradas, recurso: e.target.value });
-            }}
-          />
         </label>
+        <input
+          type="text"
+          id="bandejaRecurso"
+          className="bandejaDetalles"
+          placeholder="PDF, Drive, GitHub"
+          name="recurso"
+          value={entradas.recurso}
+          onChange={(e) => {
+            setEntradas({ ...entradas, recurso: e.target.value });
+          }}
+        />
         <button
+          className="btnAgregarDetalles"
           type="button"
           disabled={!btnRecurso}
           onClick={() => {
@@ -72,36 +74,49 @@ export const AgregarDetalles = ({ actualizar }) => {
             setEntradas({ ...entradas, recurso: "" });
           }}
         >
-          Prueba
+          Agregar Recurso
         </button>
       </div>
       <div>
-        <label>
-          Integrante
-          <input
-            type="text"
-            placeholder="Nombre"
-            name="nombre"
-            value={entradas.nombre}
-            onChange={(e) => {
-              setEntradas({ ...entradas, nombre: e.target.value });
-            }}
-          />
+        <label htmlFor="seccionEquipo">
+          {detalles.equipo.length > 0
+            ? `Integrantes: ${detalles.equipo.length}`
+            : `Equipo`}
         </label>
-        <label>
-          Rol
-          <input
-            type="text"
-            placeholder="Rol"
-            name="rol"
-            value={entradas.rol}
-            onChange={(e) => {
-              setEntradas({ ...entradas, rol: e.target.value });
-            }}
-          />
-        </label>
+        <div id="seccionEquipo">
+          <div>
+            <label htmlFor="bandejaNombre">Nombre: </label>
+            <input
+              type="text"
+              placeholder="Nombre"
+              id="bandejaNombre"
+              className="bandejaDetalles"
+              name="nombre"
+              value={entradas.nombre}
+              onChange={(e) => {
+                setEntradas({ ...entradas, nombre: e.target.value });
+              }}
+            />
+            <br />
+          </div>
+          <div>
+            <label htmlFor="bandejaRol">Rol: </label>
+            <input
+              type="text"
+              id="bandejaRol"
+              className="bandejaDetalles"
+              placeholder="Rol"
+              name="rol"
+              value={entradas.rol}
+              onChange={(e) => {
+                setEntradas({ ...entradas, rol: e.target.value });
+              }}
+            />
+          </div>
+        </div>
         <button
           type="button"
+          className="btnAgregarDetalles"
           disabled={!btnIntegrante}
           onClick={() => {
             setDetalles({
@@ -112,7 +127,7 @@ export const AgregarDetalles = ({ actualizar }) => {
             setEntradas({ ...entradas, nombre: "", rol: "" });
           }}
         >
-          Prueba
+          Agregar Integrante
         </button>
       </div>
     </fieldset>
