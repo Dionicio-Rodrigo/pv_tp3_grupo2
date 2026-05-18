@@ -18,7 +18,7 @@ export const ProyectoCard = ({ proyecto, eliminar, detalles }) => {
       <button className="btn-borrar" onClick={() => eliminar(id)}>
         Eliminar Proyecto
       </button>
-      <button className="btn-detaller" onClick={() => detalles(id)}>
+      <button className="btn-detalles" onClick={() => detalles(id)}>
         Ver Detalles
       </button>
     </div>

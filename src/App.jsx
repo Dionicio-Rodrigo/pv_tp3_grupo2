@@ -15,6 +15,8 @@ function App() {
   );
   const [home, setHome] = useState(true);
 
+  const [idDetalles, setIdDetalles] = useState(1);
+
   const buscar = (texto) => {
     setProyectos(proyectoService.buscarProyecto(texto));
   };
@@ -28,22 +30,26 @@ function App() {
   };
 
   const cambiarPagina = (id) => {
-    console.log(id);
-
+    if (id != undefined) {
+      setIdDetalles(id);
+    }
     setHome(!home);
   };
 
   return (
-    <>
+    <div id="Pagina">
       <Header />
       <Nav activo="2" />
 
-      <aside>
-        <Busqueda funcion={buscar}>
-          Buscar: <br />
-        </Busqueda>
-      </aside>
-
+      {home == true ? (
+        <aside>
+          <Busqueda funcion={buscar}>
+            Buscar: <br />
+          </Busqueda>
+        </aside>
+      ) : (
+        <></>
+      )}
       {home == true ? (
         <main>
           <h1>Nuestros Proyectos</h1>
@@ -58,12 +64,12 @@ function App() {
         </main>
       ) : (
         <main>
-          <h2>Hola</h2>
+          <DetalleProyecto idProyecto={idDetalles} onCambiarPagina={setHome} />
         </main>
       )}
 
       <Footer />
-    </>
+    </div>
   );
 }
 export default App;

@@ -1,21 +1,62 @@
-export const DetalleProyecto = ({ proyecto }) => {
-
-  if (!proyecto) {
-    return <h2>No hay proyecto</h2>;
-  }
+import { useEffect } from "react";
+import proyectoService from "../services/proyectoServices";
+export const DetalleProyecto = ({ idProyecto, onCambiarPagina }) => {
+  const proyecto = proyectoService.obtenerDetalles(idProyecto);
 
   return (
-    <div className="card">
+    <section>
+      <button
+        onClick={() => {
+          onCambiarPagina(true);
+        }}
+      >
+        Volver
+      </button>
 
-      <h1>{proyecto.titulo}</h1>
+      <article className="encabezado_pr">
+        <h2>{proyecto.titulo}</h2>
+        <span
+          className={`estado-${proyecto.finalizado ? "finalizado" : "enProceso"}`}
+        >
+          {proyecto.finalizado ? `Finalizado` : `En Proceso`}
+        </span>
+      </article>
 
-      <h3>{proyecto.categoria}</h3>
+      <article className="descripcion">
+        <h2>Descripción</h2>
+        <p>{proyecto.detalles.descripcion}</p>
+      </article>
 
-      <p>
-        Estado:
-        {proyecto.finalizado ? " Finalizado" : " En Proceso"}
-      </p>
+      <section className="recursos">
+        <h2>Recursos</h2>
+        <ul>
+          {proyecto.detalles.recursos.map((recurso, index) => (
+            <li key={index}>
+              <a href="#">{recurso}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-    </div>
+      <section className="equipo">
+        <h2>Equipo</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Rol</th>
+            </tr>
+          </thead>
+          <tbody>
+            {proyecto.detalles.equipo.map((nombre, index) => (
+              <tr key={index}>
+                <td>{nombre}</td>
+                <td>{proyecto.detalles.roles[index]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    </section>
   );
 };
