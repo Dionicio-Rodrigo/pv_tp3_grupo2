@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../css/Agregar.css";
+import { AgregarDetalles } from "./AgregarDetalles";
 
 export const AgregarProyecto = ({ funcion }) => {
 
@@ -19,6 +20,10 @@ export const AgregarProyecto = ({ funcion }) => {
   });
 
   const [invalido, setInvalido] = useState(true);
+
+  const handleActualizar = (detalles) => {
+    setnuevoProyecto({ ...nuevoProyecto, detalles: { ...detalles } });
+  };
 
   useEffect(() => {
 
