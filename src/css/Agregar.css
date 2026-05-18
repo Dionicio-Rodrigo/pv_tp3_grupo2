@@ -61,6 +61,16 @@ option::checkmark {
   text-align: center;
   min-width: 10vw;
 }
+
+#agregarDetalles > label > input[type="text"],
+#agregarDetalles > label > textarea {
+  border-radius: 4px;
+  border: solid 2px var(--Negro);
+  padding: 0.25em;
+  background-color: var(--Blanco);
+  border: none;
+  font-size: 1rem;
+}
 #finalizado,
 #enProceso {
   display: none;
