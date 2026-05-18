@@ -37,7 +37,7 @@ function App() {
   };
 
   return (
-    <div id="Pagina">
+    <div id={home ? `Pagina` : `Detalles`}>
       <Header />
       <Nav activo="2" />
 

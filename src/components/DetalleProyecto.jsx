@@ -1,30 +1,24 @@
 import { useEffect } from "react";
 import proyectoService from "../services/proyectoServices";
+import "../css/Detalles.css";
+
 export const DetalleProyecto = ({ idProyecto, onCambiarPagina }) => {
   const proyecto = proyectoService.obtenerDetalles(idProyecto);
   return (
-    <section>
-      <button
-        onClick={() => {
-          onCambiarPagina(true);
-        }}
-      >
-        Volver
-      </button>
-
-      <article className="encabezado_pr">
-        <h2>{proyecto.titulo}</h2>
+    <section className="main-detalles">
+      <section className="encabezado_pr">
+        <h1>{proyecto.titulo}</h1>
         <span
           className={`estado-${proyecto.finalizado ? "finalizado" : "enProceso"}`}
         >
           {proyecto.finalizado ? `Finalizado` : `En Proceso`}
         </span>
-      </article>
+      </section>
 
-      <article className="descripcion">
+      <section className="descripcion">
         <h2>Descripción</h2>
         <p>{proyecto.detalles.descripcion}</p>
-      </article>
+      </section>
 
       <section className="recursos">
         <h2>Recursos</h2>
@@ -56,6 +50,15 @@ export const DetalleProyecto = ({ idProyecto, onCambiarPagina }) => {
           </tbody>
         </table>
       </section>
+
+      <button
+        className="volver"
+        onClick={() => {
+          onCambiarPagina(true);
+        }}
+      >
+        Volver
+      </button>
     </section>
   );
 };

@@ -60,10 +60,12 @@
   font-weight: bold;
 }
 
-.btn-borrar:hover {
+.btn-borrar:hover,
+.btn-detalles:hover {
   background-color: var(--luz-filtros);
 }
 
-.btn-borrar:active {
+.btn-borrar:active,
+.btn-detalles:active {
   box-shadow: 2px 2px var(--Negro) inset;
 }
