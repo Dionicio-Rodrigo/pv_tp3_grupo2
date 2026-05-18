@@ -90,85 +90,6 @@ export const AgregarProyecto = ({ funcion }) => {
             <option value="Recaudacion">Recaudación</option>
           </select>
         </label>
-
-        <label>
-          Descripción
-          <br />
-          <textarea
-            placeholder="Descripción del proyecto"
-            onChange={(e) => {
-              setnuevoProyecto({
-                ...nuevoProyecto,
-
-                detalles: {
-                  ...nuevoProyecto.detalles,
-                  descripcion: e.target.value,
-                },
-              });
-            }}
-          />
-        </label>
-
-        <label>
-          Recursos
-          <br />
-          <input
-            type="text"
-            placeholder="PDF, Drive, GitHub"
-            onChange={(e) => {
-              setnuevoProyecto({
-                ...nuevoProyecto,
-
-                detalles: {
-                  ...nuevoProyecto.detalles,
-
-                  recursos: e.target.value.split(","),
-                },
-              });
-            }}
-          />
-        </label>
-
-        <label>
-          Integrante
-          <br />
-          <input
-            type="text"
-            placeholder="Nombre"
-            onChange={(e) => {
-              setnuevoProyecto({
-                ...nuevoProyecto,
-
-                detalles: {
-                  ...nuevoProyecto.detalles,
-
-                  equipo: [e.target.value],
-                },
-              });
-            }}
-          />
-        </label>
-
-        <label>
-          Rol
-          <br />
-          <input
-            type="text"
-            placeholder="Rol"
-            onChange={(e) => {
-              setnuevoProyecto({
-                ...nuevoProyecto,
-
-                detalles: {
-                  ...nuevoProyecto.detalles,
-
-                  roles: [e.target.value],
-                },
-              });
-            }}
-          />
-        </label>
-
         <div>
           Estado
           <br />
@@ -198,7 +119,6 @@ export const AgregarProyecto = ({ funcion }) => {
           <label htmlFor="enProceso">En Proceso</label>
         </div>
       </form>
-      <AgregarDetalles actualizar={handleActualizar} />
       <button
         form="datosEntrada"
         type="submit"
