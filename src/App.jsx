@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { Footer } from "./components/Footer.jsx";
 import { Header } from "./components/Header.jsx";
 import { Nav } from "./components/Nav.jsx";
@@ -8,26 +8,37 @@ import proyectoService from "./services/proyectoServices.js";
 import { Busqueda } from "./components/Busqueda.jsx";
 import "./css/App.css";
 import { DetalleProyecto } from "./components/DetalleProyecto.jsx";
+import { RegistroActividad } from "./components/RegistroActividad.jsx";
 
 function App() {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),
   );
   const [home, setHome] = useState(true);
-
   const [idDetalles, setIdDetalles] = useState(1);
+  const [tiempo, setTiempo] = useState(null);
+  const nuevoMensaje = useRef("");
+  const [activarMensaje, setActivarMensaje] = useState(false);
 
   const buscar = (texto) => {
+    if (texto == "") setActivarMensaje(false);
+    if (texto != "") setActivarMensaje(true);
     setProyectos(proyectoService.buscarProyecto(texto));
   };
   const agregar = (nuevoProyecto) => {
+    nuevoMensaje.current = "Agregado";
     proyectoService.agregarProyecto(nuevoProyecto);
     setProyectos(proyectoService.obtenerProyectos());
   };
   const eliminar = (id) => {
+    nuevoMensaje.current = "Eliminado";
     proyectoService.eliminarProyecto(id);
     setProyectos(proyectoService.obtenerProyectos());
   };
+
+  useEffect(() => {
+    setTiempo(new Date());
+  }, [nuevoMensaje.current]);
 
   const cambiarPagina = (id) => {
     if (id != undefined) {
@@ -59,7 +70,11 @@ function App() {
             eliminar={eliminar}
             detalles={cambiarPagina}
           />
-
+          {nuevoMensaje.current != "" && !activarMensaje ? (
+            <RegistroActividad fecha={tiempo} mensaje={nuevoMensaje.current} />
+          ) : (
+            <></>
+          )}
           <AgregarProyecto funcion={agregar} />
         </main>
       ) : (
