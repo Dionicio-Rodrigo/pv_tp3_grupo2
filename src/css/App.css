@@ -106,6 +106,13 @@ main > h1 {
   border-radius: 4px;
 }
 
+#mensaje-actividad {
+  text-align: center;
+  background-color: var(--Gris);
+  border-radius: 4px;
+  font-weight: bold;
+}
+
 /*Solo se utiliza cuando la pagina se va a los detalles */
 #Detalles {
   display: grid;
