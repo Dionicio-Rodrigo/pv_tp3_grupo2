@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
-    <footer>
-      <p>© Sinergia Educativa 2026 — Facultad de Ingeniería</p>
-    </footer>
+    <p style={{ margin: "0" }}>
+      © Sinergia Educativa 2026 — Facultad de Ingeniería
+    </p>
   );
 };
