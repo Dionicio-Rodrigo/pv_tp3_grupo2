@@ -3,7 +3,6 @@ import { ListaProyectos } from "../components/ListaProyectos.jsx";
 import { AgregarProyecto } from "../components/Agregar.jsx";
 import proyectoService from "../services/proyectoServices.js";
 import { Busqueda } from "../components/Busqueda.jsx";
-import { DetalleProyecto } from "../components/DetalleProyecto.jsx";
 import { RegistroActividad } from "../components/RegistroActividad.jsx";
 import { Grid } from "@mui/material";
 
@@ -11,7 +10,6 @@ function Proyectos() {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),
   );
-  const [idDetalles, setIdDetalles] = useState(1);
   const [tiempo, setTiempo] = useState(null);
   const nuevoMensaje = useRef("");
   const [activarMensaje, setActivarMensaje] = useState(false);

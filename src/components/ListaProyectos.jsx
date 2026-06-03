@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../css/ListaProyectos.css";
 import { ProyectoCard } from "./ProyectoCard.jsx";
 
 export const ListaProyectos = ({ lista, eliminar, detalles }) => {
@@ -14,7 +13,6 @@ export const ListaProyectos = ({ lista, eliminar, detalles }) => {
           key={proyecto.id}
           proyecto={proyecto}
           eliminar={eliminar}
-          detalles={detalles}
         />
       ))}
     </div>

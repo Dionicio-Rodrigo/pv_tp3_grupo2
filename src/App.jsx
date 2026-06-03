@@ -3,6 +3,7 @@ import { LayoutPagina } from "./layouts/LayoutPagina.jsx";
 import Proyectos from "./views/Proyectos.jsx";
 import DashBoard from "./views/Dashboard.jsx";
 import Perfil from "./views/Perfil.jsx";
+import { DetalleProyecto } from "./views/DetalleProyecto.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +12,7 @@ function App() {
           <Route index element={<DashBoard />} />
           <Route path="proyectos" element={<Proyectos />} />
           <Route path="perfil" element={<Perfil />} />
+          <Route path="proyectos/:id" element={<DetalleProyecto />} />
         </Route>
       </Routes>
     </BrowserRouter>

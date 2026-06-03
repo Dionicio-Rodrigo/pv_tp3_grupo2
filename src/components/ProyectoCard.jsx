@@ -1,6 +1,6 @@
-import { DetalleProyecto } from "./DetalleProyecto";
+import { NavLink } from "react-router-dom";
 
-export const ProyectoCard = ({ proyecto, eliminar, detalles }) => {
+export const ProyectoCard = ({ proyecto, eliminar }) => {
   const { titulo, categoria, finalizado, id } = proyecto;
 
   return (
@@ -18,8 +18,8 @@ export const ProyectoCard = ({ proyecto, eliminar, detalles }) => {
       <button className="btn-borrar" onClick={() => eliminar(id)}>
         Eliminar Proyecto
       </button>
-      <button className="btn-detalles" onClick={() => detalles(id)}>
-        Ver Detalles
+      <button className="btn-detalles">
+        <NavLink to={`/Proyectos/${id}`}>Ver detalles</NavLink>
       </button>
     </div>
   );
