@@ -1,19 +1,31 @@
-const ElementoNav = ({ children, link = "#", select }) => {
-  return (
-    <a href={link} className={select == true ? "navact" : ""}>
-      {children}
-    </a>
-  );
-};
+import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { Link, NavLink } from "react-router-dom";
 
-export const Nav = ({ activo = "0" }) => {
-  // Podemos elegir con ^ cual casilla va a estar activa
-  // Si no le asignamos un valor, ninguna casilla se activara
+export const Nav = () => {
   return (
-    <nav>
-      <ElementoNav select={activo == "1" ? true : false}>Inicio</ElementoNav>
-      <ElementoNav select={activo == "2" ? true : false}>Proyectos</ElementoNav>
-      <ElementoNav select={activo == "3" ? true : false}>Mi Perfil</ElementoNav>
-    </nav>
+    <List sx={{ p: "0" }}>
+      <ListItemButton
+        component={NavLink}
+        to="/"
+        end
+        sx={{ pt: "0.25em", pb: "0.25em" }}
+      >
+        <ListItemText primary="Inicio" />
+      </ListItemButton>
+      <ListItemButton
+        component={NavLink}
+        to="/Proyectos"
+        sx={{ pt: "0.25em", pb: "0.25em" }}
+      >
+        <ListItemText primary="Proyectos" />
+      </ListItemButton>
+      <ListItemButton
+        component={NavLink}
+        to="/Perfil"
+        sx={{ pt: "0.25em", pb: "0.25em" }}
+      >
+        <ListItemText primary="Mi Perfil" />
+      </ListItemButton>
+    </List>
   );
 };
