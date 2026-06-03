@@ -1,11 +1,15 @@
 import { useEffect } from "react";
 import proyectoService from "../services/proyectoServices";
-import "../css/Detalles.css";
+import { NavLink, useParams } from "react-router-dom";
 
-export const DetalleProyecto = ({ idProyecto, onCambiarPagina }) => {
-  const proyecto = proyectoService.obtenerDetalles(idProyecto);
+export const DetalleProyecto = ({}) => {
+  const ruta = useParams();
+  const proyecto = proyectoService.obtenerDetalles(ruta.id);
   return (
     <section className="main-detalles">
+      <button className="volver">
+        <NavLink to="/Proyectos">Volver</NavLink>
+      </button>
       <section className="encabezado_pr">
         <h1>{proyecto.titulo}</h1>
         <span
@@ -50,15 +54,6 @@ export const DetalleProyecto = ({ idProyecto, onCambiarPagina }) => {
           </tbody>
         </table>
       </section>
-
-      <button
-        className="volver"
-        onClick={() => {
-          onCambiarPagina(true);
-        }}
-      >
-        Volver
-      </button>
     </section>
   );
 };

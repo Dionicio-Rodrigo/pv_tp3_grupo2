@@ -1,90 +1,21 @@
-import { use, useEffect, useRef, useState } from "react";
-import { Footer } from "./components/Footer.jsx";
-import { Header } from "./components/Header.jsx";
-import { Nav } from "./components/Nav.jsx";
-import { ListaProyectos } from "./components/ListaProyectos.jsx";
-import { AgregarProyecto } from "./components/Agregar.jsx";
-import proyectoService from "./services/proyectoServices.js";
-import { Busqueda } from "./components/Busqueda.jsx";
-import "./css/App.css";
-import { DetalleProyecto } from "./components/DetalleProyecto.jsx";
-import { RegistroActividad } from "./components/RegistroActividad.jsx";
-
+import { BrowserRouter, Routes, Route, Router } from "react-router";
+import { LayoutPagina } from "./layouts/LayoutPagina.jsx";
+import Proyectos from "./views/Proyectos.jsx";
+import DashBoard from "./views/Dashboard.jsx";
+import Perfil from "./views/Perfil.jsx";
+import { DetalleProyecto } from "./views/DetalleProyecto.jsx";
 function App() {
-  const [proyectos, setProyectos] = useState(
-    proyectoService.obtenerProyectos(),
-  );
-  const [home, setHome] = useState(true);
-  const [idDetalles, setIdDetalles] = useState(1);
-  const [tiempo, setTiempo] = useState(null);
-  const nuevoMensaje = useRef("");
-  const [activarMensaje, setActivarMensaje] = useState(false);
-
-  const buscar = (texto) => {
-    if (texto == "") setActivarMensaje(false);
-    if (texto != "") setActivarMensaje(true);
-    setProyectos(proyectoService.buscarProyecto(texto));
-  };
-  const agregar = (nuevoProyecto) => {
-    nuevoMensaje.current = "Agregado";
-    proyectoService.agregarProyecto(nuevoProyecto);
-    setProyectos(proyectoService.obtenerProyectos());
-  };
-  const eliminar = (id) => {
-    nuevoMensaje.current = "Eliminado";
-    proyectoService.eliminarProyecto(id);
-    setProyectos(proyectoService.obtenerProyectos());
-  };
-
-  useEffect(() => {
-    setTiempo(new Date());
-  }, [nuevoMensaje.current]);
-
-  const cambiarPagina = (id) => {
-    if (id != undefined) {
-      setIdDetalles(id);
-    }
-    setHome(!home);
-  };
-
   return (
-    <div id={home ? `Pagina` : `Detalles`}>
-      <Header />
-      <Nav activo="2" />
-
-      {home == true ? (
-        <aside>
-          <Busqueda funcion={buscar}>
-            Buscar: <br />
-          </Busqueda>
-        </aside>
-      ) : (
-        <></>
-      )}
-      {home == true ? (
-        <main>
-          <h1>Nuestros Proyectos</h1>
-
-          <ListaProyectos
-            lista={proyectos}
-            eliminar={eliminar}
-            detalles={cambiarPagina}
-          />
-          {nuevoMensaje.current != "" && !activarMensaje ? (
-            <RegistroActividad fecha={tiempo} mensaje={nuevoMensaje.current} />
-          ) : (
-            <></>
-          )}
-          <AgregarProyecto funcion={agregar} />
-        </main>
-      ) : (
-        <main>
-          <DetalleProyecto idProyecto={idDetalles} onCambiarPagina={setHome} />
-        </main>
-      )}
-
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LayoutPagina />}>
+          <Route index element={<DashBoard />} />
+          <Route path="proyectos" element={<Proyectos />} />
+          <Route path="perfil" element={<Perfil />} />
+          <Route path="proyectos/:id" element={<DetalleProyecto />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 export default App;
