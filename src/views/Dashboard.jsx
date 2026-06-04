@@ -11,7 +11,7 @@ const DashBoard = () => {
   ]);
 
   useEffect(() => {
-    const data = proyectoService.getProyectos();
+    const data = proyectoService.obtenerProyectos();
     setProyectos(data);
   }, []);
 
