@@ -11,6 +11,7 @@ const Theme = createTheme({
   palette: {
     primary: { main: CELESTE, contrastText: BLANCO },
     secondary: { main: NEGRO, contrastText: BLANCO },
+    background: { default: BLANCO, paper: GRIS },
   },
   typography: { fontFamily: `"Arial", "Helvetica", "sans-serif` },
 });

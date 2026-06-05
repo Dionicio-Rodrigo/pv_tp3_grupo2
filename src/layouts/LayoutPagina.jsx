@@ -41,7 +41,10 @@ export const LayoutPagina = () => {
       >
         <Nav />
       </Grid>
-      <Grid component="main" sx={{ gridArea: "main" }}>
+      <Grid
+        component="main"
+        sx={{ gridArea: "main", backgroundColor: "backround.default" }}
+      >
         <Outlet />
       </Grid>
       <Grid
