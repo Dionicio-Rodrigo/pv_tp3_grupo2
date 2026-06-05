@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import "../css/AgregarDetalles.css";
 
 export const AgregarDetalles = ({ actualizar }) => {
   const [detalles, setDetalles] = useState({

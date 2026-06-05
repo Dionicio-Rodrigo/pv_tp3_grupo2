@@ -1,3 +1,9 @@
+import { Typography } from "@mui/material";
+
 export const Header = () => {
-  return <h1>Sinergia Educativa</h1>;
+  return (
+    <Typography variant="h1" color="primary">
+      Sinergia Educativa
+    </Typography>
+  );
 };

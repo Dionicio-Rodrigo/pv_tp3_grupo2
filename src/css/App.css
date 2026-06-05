@@ -1,14 +1,14 @@
 :root {
-  --luz-filtros: rgb(229, 184, 164);
-  --base-filtros: rgb(220, 158, 130);
-  --oscuro-filtros: rgb(209, 148, 120);
-  --Rosa: rgb(235, 94, 165);
-  --Rojo: rgb(235 94 94);
-  --Naranja: rgb(220, 158, 130);
-  --Negro: rgb(41, 47, 54);
-  --Celeste: rgb(94, 164, 235);
-  --Blanco: rgb(247, 255, 247);
-  --Gris: rgb(214, 219, 224);
+  --luz-filtros: #e5b8a4;
+  --base-filtros: #dc9e82;
+  --oscuro-filtros: #d19478;
+  --Rosa: #eb5ea5;
+  --Rojo: #eb5e5e;
+  --Naranja: #dc9e82;
+  --Negro: #292f36;
+  --Celeste: #5ea4eb;
+  --Blanco: #f7fff7;
+  --Gris: #d6dbe0;
   color: var(--Negro);
   font-family: Arial, Helvetica, sans-serif;
 }

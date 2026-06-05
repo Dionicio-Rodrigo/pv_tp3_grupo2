@@ -4,7 +4,11 @@ import Proyectos from "./views/Proyectos.jsx";
 import DashBoard from "./views/Dashboard.jsx";
 import Perfil from "./views/Perfil.jsx";
 import { DetalleProyecto } from "./views/DetalleProyecto.jsx";
+import Theme from "./layouts/Theme.jsx";
+
 function App() {
+  console.log(Theme.sombraTexto);
+
   return (
     <BrowserRouter>
       <Routes>
