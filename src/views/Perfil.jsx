@@ -31,7 +31,7 @@ const Perfil = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={12} md={6}>
+      <Grid xs={12} md={6}>
         <Paper elevation={3} sx={{ p: 3 }}>
           <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
             <Avatar sx={{ width: 80, height: 80, mr: 2 }} />
@@ -49,7 +49,7 @@ const Perfil = () => {
             Información Personal
           </Typography>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="Nombre Completo"
@@ -59,7 +59,7 @@ const Perfil = () => {
                 }
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="DNI"
@@ -67,7 +67,7 @@ const Perfil = () => {
                 onChange={(e) => setPerfil({ ...perfil, dni: e.target.value })}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid xs={12}>
               <Button variant="contained" color="primary">
                 Actualizar Perfil
               </Button>
@@ -75,13 +75,13 @@ const Perfil = () => {
           </Grid>
         </Paper>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid xs={12} md={6}>
         <Paper elevation={3} sx={{ p: 3 }}>
           <Typography variant="h6" gutterBottom>
             Nuevo Mensaje
           </Typography>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="Destinatario"
@@ -91,7 +91,7 @@ const Perfil = () => {
                 }
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 multiline
@@ -103,7 +103,7 @@ const Perfil = () => {
                 }
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid xs={12}>
               <Button variant="outlined" color="secondary">
                 Enviar Mensaje
               </Button>

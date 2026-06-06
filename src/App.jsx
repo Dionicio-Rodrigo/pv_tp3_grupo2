@@ -7,8 +7,6 @@ import { DetalleProyecto } from "./views/DetalleProyecto.jsx";
 import Theme from "./layouts/Theme.jsx";
 
 function App() {
-  console.log(Theme.sombraTexto);
-
   return (
     <BrowserRouter>
       <Routes>

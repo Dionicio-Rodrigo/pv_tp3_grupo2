@@ -34,13 +34,13 @@ const DashBoard = () => {
 
   return (
     <Grid container spacing={3} sx={{ p: 3 }}>
-      <Grid item xs={12}>
+      <Grid xs={12}>
         <Typography variant="h3" gutterBottom>
           Dashboard
         </Typography>
       </Grid>
 
-      <Grid item xs={12} md={4}>
+      <Grid xs={12} md={4}>
         <Card sx={{ bgcolor: "#f5f5f5" }}>
           <CardContent>
             <Typography color="textSecondary" variant="overline">
@@ -51,7 +51,7 @@ const DashBoard = () => {
         </Card>
       </Grid>
 
-      <Grid item xs={12} md={4}>
+      <Grid xs={12} md={4}>
         <Card sx={{ bgcolor: "#e3f2fd" }}>
           <CardContent>
             <Typography color="textSecondary" variant="overline">
@@ -62,12 +62,12 @@ const DashBoard = () => {
         </Card>
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid xs={12}>
         <Paper sx={{ p: 3 }}>
           <Typography variant="h5" gutterBottom>
             Objetivos Generales
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" paragraph="true">
             Somos un grupo de la facultad convencidos de que la ingeniería se
             aprende resolviendo problemas de verdad. Queremos que aquí aprendas
             a liderar y a fabricar soluciones reales.
@@ -75,7 +75,7 @@ const DashBoard = () => {
         </Paper>
       </Grid>
 
-      <Grid item xs={12} md={6}>
+      <Grid xs={12} md={6}>
         <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
           Novedades
         </Typography>
@@ -97,7 +97,7 @@ const DashBoard = () => {
         </Paper>
       </Grid>
 
-      <Grid item xs={12} md={6}>
+      <Grid xs={12} md={6}>
         <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
           Panel de Mensajes
         </Typography>

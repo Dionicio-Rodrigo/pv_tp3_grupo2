@@ -1,21 +1,22 @@
 import React from "react";
-import { Grid, Container} from "@mui/material";
+import { Stack } from "@mui/material";
 import { ProyectoCard } from "./ProyectoCard.jsx";
 
 export const ListaProyectos = ({ lista, eliminar, detalles }) => {
   return (
-    <Container sx={{ py: 4 }}>
-      <Grid container spacing={3}>
-        {lista.map((proyecto) => (
-          <Grid item xs={12} sm={6} md={4}>
+    <Stack
+      direction="row"
+      useFlexGap
+      spacing={{ xs: 1, sm: 2 }}
+      sx={{ flexWrap: "wrap", justifyContent: "center" }}
+    >
+      {lista.map((proyecto) => (
         <ProyectoCard
           key={proyecto.id}
-          proyecto={proyecto}
           eliminar={eliminar}
+          proyecto={proyecto}
         />
-        </Grid>
       ))}
-    </Grid>
-   </Container>   
+    </Stack>
   );
 };

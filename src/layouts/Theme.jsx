@@ -12,8 +12,19 @@ const Theme = createTheme({
     primary: { main: CELESTE, contrastText: BLANCO },
     secondary: { main: NEGRO, contrastText: BLANCO },
     background: { default: BLANCO, paper: GRIS },
+    colores: {
+      naranja: NARANJA,
+      negro: NEGRO,
+      celeste: CELESTE,
+      blanco: BLANCO,
+      gris: GRIS,
+      rosa: ROSA,
+    },
   },
-  typography: { fontFamily: `"Arial", "Helvetica", "sans-serif` },
+  typography: {
+    fontFamily: `"Arial", "Helvetica", "sans-serif"`,
+    h1: { fontSize: "3rem", fontWeight: 700 },
+  },
 });
 
 export default Theme;
