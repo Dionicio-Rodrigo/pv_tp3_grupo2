@@ -4,8 +4,8 @@ import { AgregarProyecto } from "../components/Agregar.jsx";
 import proyectoService from "../services/proyectoServices.js";
 import { Busqueda } from "../components/Busqueda.jsx";
 import { RegistroActividad } from "../components/RegistroActividad.jsx";
-import { Grid } from "@mui/material";
-
+import { Box, Drawer, Stack, Fab, Typography, Paper } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 function Proyectos() {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),
@@ -13,7 +13,7 @@ function Proyectos() {
   const [tiempo, setTiempo] = useState(null);
   const nuevoMensaje = useRef("");
   const [activarMensaje, setActivarMensaje] = useState(false);
-
+  const [abierto, setAbierto] = useState(false);
   const buscar = (texto) => {
     if (texto == "") setActivarMensaje(false);
     if (texto != "") setActivarMensaje(true);
@@ -35,13 +35,15 @@ function Proyectos() {
   }, [nuevoMensaje.current]);
 
   return (
-    <Grid container id="proyectos">
-      <Grid component="aside" size={2}>
+    <Box sx={{ display: "flex", flexDirection: "row" }}>
+      <Drawer open={abierto} variant="persistent">
         <Busqueda funcion={buscar}> Buscador</Busqueda>
-      </Grid>
-      <Grid component="section" size={10}>
-        <h1>Nuestros Proyectos</h1>
+      </Drawer>
 
+      <Stack sx={{ p: "1em" }} spacing={2}>
+        <Paper>
+          <Typography variant="h2">Nuestros Proyectos</Typography>
+        </Paper>
         <ListaProyectos lista={proyectos} eliminar={eliminar} />
         {nuevoMensaje.current != "" && !activarMensaje ? (
           <RegistroActividad fecha={tiempo} mensaje={nuevoMensaje.current} />
@@ -49,8 +51,19 @@ function Proyectos() {
           <></>
         )}
         <AgregarProyecto funcion={agregar} />
-      </Grid>
-    </Grid>
+      </Stack>
+      <Fab
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
+        color="success"
+        variant="extended"
+        onClick={() => {
+          setAbierto(true);
+        }}
+      >
+        <SearchIcon />
+        Buscar
+      </Fab>
+    </Box>
   );
 }
 export default Proyectos;

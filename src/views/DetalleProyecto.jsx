@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import proyectoService from "../services/proyectoServices";
 import { NavLink, useParams } from "react-router-dom";
+import { Button } from "@mui/material";
 
 export const DetalleProyecto = ({}) => {
   const ruta = useParams();
   const proyecto = proyectoService.obtenerDetalles(ruta.id);
   return (
     <section className="main-detalles">
-      <button className="volver">
-        <NavLink to="/Proyectos">Volver</NavLink>
-      </button>
+      <Button component={NavLink} to="/Proyectos" variant="contained">
+        Volver
+      </Button>
       <section className="encabezado_pr">
         <h1>{proyecto.titulo}</h1>
         <span

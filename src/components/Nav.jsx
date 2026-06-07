@@ -1,31 +1,31 @@
+import styled from "@emotion/styled";
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
+
+const NavElemento = styled(ListItemButton)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.main,
+  paddingBottom: "0.25em",
+  paddingTop: "0.25em",
+  "&:hover": { backgroundColor: theme.palette.primary.main },
+  "&.active": { backgroundColor: theme.palette.primary.main },
+  "& .MuiListItemText-primary": {
+    color: theme.palette.primary.contrastText,
+    textShadow: `1px 1px ${theme.palette.secondary.main}`,
+  },
+}));
 
 export const Nav = () => {
   return (
     <List sx={{ p: "0" }}>
-      <ListItemButton
-        component={NavLink}
-        to="/"
-        end
-        sx={{ pt: "0.25em", pb: "0.25em" }}
-      >
+      <NavElemento component={NavLink} to="/">
         <ListItemText primary="Inicio" />
-      </ListItemButton>
-      <ListItemButton
-        component={NavLink}
-        to="/Proyectos"
-        sx={{ pt: "0.25em", pb: "0.25em" }}
-      >
+      </NavElemento>
+      <NavElemento component={NavLink} to="/Proyectos">
         <ListItemText primary="Proyectos" />
-      </ListItemButton>
-      <ListItemButton
-        component={NavLink}
-        to="/Perfil"
-        sx={{ pt: "0.25em", pb: "0.25em" }}
-      >
+      </NavElemento>
+      <NavElemento component={NavLink} to="/Perfil">
         <ListItemText primary="Mi Perfil" />
-      </ListItemButton>
+      </NavElemento>
     </List>
   );
 };

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../css/Busqueda.css";
 
 export const Busqueda = ({ children, funcion }) => {
   const handleFuncion = (entrada) => {
