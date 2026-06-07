@@ -22,17 +22,41 @@ export const LayoutPagina = () => {
     >
       <Grid
         component="header"
-        sx={{ gridArea: "header", textAlign: "center", alignContent: "center" }}
+        sx={{
+          gridArea: "header",
+          textAlign: "center",
+          alignContent: "center",
+          backgroundColor: "primary.main",
+          color: "primary.contrastText",
+          textShadow: "1px 1px  #292f36",
+        }}
       >
         <Header />
       </Grid>
-      <Grid component="nav" sx={{ gridArea: "nav" }}>
+      <Grid
+        component="nav"
+        sx={{
+          gridArea: "nav",
+        }}
+      >
         <Nav />
       </Grid>
-      <Grid component="main" sx={{ gridArea: "main" }}>
+      <Grid
+        component="main"
+        sx={{ gridArea: "main", backgroundColor: "backround.default" }}
+      >
         <Outlet />
       </Grid>
-      <Grid component="footer" sx={{ gridArea: "footer" }}>
+      <Grid
+        component="footer"
+        sx={{
+          gridArea: "footer",
+          backgroundColor: "secondary.main",
+          color: "primary.contrastText",
+          textShadow: "1px 1px  #292f36",
+          padding: "0.25em",
+        }}
+      >
         <Footer />
       </Grid>
     </Grid>

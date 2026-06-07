@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "../css/Agregar.css";
 import { AgregarDetalles } from "./AgregarDetalles";
 import {
   TextField,

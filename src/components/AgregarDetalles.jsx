@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+<<<<<<< HEAD
 import "../css/AgregarDetalles.css";
 import {
   TextField,
   Button,
 } from "@mui/material";
+=======
+>>>>>>> ee960c973a1c609d2b44c6dfdff86e0c363bed24
 
 export const AgregarDetalles = ({ actualizar }) => {
   const [detalles, setDetalles] = useState({
