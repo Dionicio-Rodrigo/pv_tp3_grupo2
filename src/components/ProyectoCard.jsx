@@ -1,26 +1,41 @@
+
 import { NavLink } from "react-router-dom";
+import { Card, CardContent, Typography, Button } from "@mui/material";
 
 export const ProyectoCard = ({ proyecto, eliminar }) => {
   const { titulo, categoria, finalizado, id } = proyecto;
 
   return (
-    <div className="card">
-      <h2>{titulo}</h2>
+  <Card sx={{ margin: 2 }}>
+    <CardContent>
+      <Typography variant="h5">
+        {titulo}
+      </Typography>
 
-      <div className="categoria-estado">
-        <h3>{categoria}</h3>
+      <Typography variant="body1">
+        {categoria}
+      </Typography>
 
-        <span className={`estado-${finalizado ? "finalizado" : "enProceso"}`}>
-          {finalizado ? "Finalizado" : "En Proceso"}
-        </span>
-      </div>
+      <Typography variant="body2">
+        {finalizado ? "Finalizado" : "En Proceso"}
+      </Typography>
 
-      <button className="btn-borrar" onClick={() => eliminar(id)}>
+      <Button
+        variant="contained"
+        onClick={() => eliminar(id)}
+        sx={{ mr: 1 }}
+      >
         Eliminar Proyecto
-      </button>
-      <button className="btn-detalles">
-        <NavLink to={`/Proyectos/${id}`}>Ver detalles</NavLink>
-      </button>
-    </div>
-  );
+      </Button>
+
+      <Button
+        variant="outlined"
+        component={NavLink}
+        to={`/Proyectos/${id}`}
+      >
+        Ver detalles
+      </Button>
+    </CardContent>
+  </Card>
+);
 };
