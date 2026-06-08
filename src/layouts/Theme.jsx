@@ -13,6 +13,7 @@ const Theme = createTheme({
     secondary: { main: NEGRO, contrastText: BLANCO },
     success: { main: CELESTE, contrastText: BLANCO },
     warning: { main: ROSA, contrastText: BLANCO },
+    error: { main: NARANJA, contrastText: NEGRO },
     background: { default: BLANCO, paper: GRIS },
     colores: {
       naranja: NARANJA,

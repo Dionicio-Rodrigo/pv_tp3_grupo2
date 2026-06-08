@@ -13,7 +13,6 @@ function Proyectos() {
   const [tiempo, setTiempo] = useState(null);
   const nuevoMensaje = useRef("");
   const [activarMensaje, setActivarMensaje] = useState(false);
-  const [abierto, setAbierto] = useState(false);
   const buscar = (texto) => {
     if (texto == "") setActivarMensaje(false);
     if (texto != "") setActivarMensaje(true);
@@ -35,34 +34,20 @@ function Proyectos() {
   }, [nuevoMensaje.current]);
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "row" }}>
-      <Drawer open={abierto} variant="persistent">
+    <Box component={Stack} direction="column" spacing={1}>
+      <Paper>
+        <Typography variant="h2">Nuestros Proyectos</Typography>
+      </Paper>
+      <Box sx={{ alignSelf: "center" }}>
         <Busqueda funcion={buscar}> Buscador</Busqueda>
-      </Drawer>
-
-      <Stack spacing={2}>
-        <Paper>
-          <Typography variant="h2">Nuestros Proyectos</Typography>
-        </Paper>
-        <ListaProyectos lista={proyectos} eliminar={eliminar} />
-        {nuevoMensaje.current != "" && !activarMensaje ? (
-          <RegistroActividad fecha={tiempo} mensaje={nuevoMensaje.current} />
-        ) : (
-          <></>
-        )}
-        <AgregarProyecto funcion={agregar} />
-      </Stack>
-      <Fab
-        sx={{ position: "fixed", bottom: 16, right: 16 }}
-        color="success"
-        variant="extended"
-        onClick={() => {
-          setAbierto(true);
-        }}
-      >
-        <SearchIcon />
-        Buscar
-      </Fab>
+      </Box>
+      <ListaProyectos lista={proyectos} eliminar={eliminar} />
+      {nuevoMensaje.current != "" && !activarMensaje ? (
+        <RegistroActividad fecha={tiempo} mensaje={nuevoMensaje.current} />
+      ) : (
+        <></>
+      )}
+      <AgregarProyecto funcion={agregar} />
     </Box>
   );
 }
