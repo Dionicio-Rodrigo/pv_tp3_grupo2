@@ -5,7 +5,7 @@ import { ProyectoCard } from "./ProyectoCard.jsx";
 export const ListaProyectos = ({ lista, eliminar, detalles }) => {
   return (
     <Stack
-      direction="row"
+      direction={{ xs: "column", sm: "row" }}
       useFlexGap
       spacing={{ xs: 1, sm: 2 }}
       sx={{ flexWrap: "wrap", justifyContent: "center" }}

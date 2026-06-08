@@ -16,7 +16,6 @@ const Carta = styled(Card)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "stretch",
-  maxWidth: "50vw",
   padding: "1em",
 }));
 
