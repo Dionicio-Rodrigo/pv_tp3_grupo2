@@ -12,7 +12,7 @@ const Theme = createTheme({
     primary: { main: CELESTE, contrastText: BLANCO },
     secondary: { main: NEGRO, contrastText: BLANCO },
     success: { main: NARANJA, contrastText: NEGRO },
-    error: { main: ROSA, contrastText: NEGRO },
+    error: { main: ROSA, contrastText: BLANCO },
     background: { default: BLANCO, paper: GRIS },
     colores: {
       naranja: NARANJA,
@@ -25,8 +25,29 @@ const Theme = createTheme({
   },
   typography: {
     fontFamily: `"Arial", "Helvetica", "sans-serif"`,
-    h1: { fontSize: "3rem", fontWeight: 700 },
-    h2: { fontSize: "2em", fontWeight: 600 },
+    h1: {
+      fontSize: "3rem",
+      fontWeight: 700,
+      textAlign: "center",
+    },
+    h2: {
+      fontSize: "2em",
+      margin: "0.35em",
+      fontWeight: 600,
+      textAlign: "center",
+    },
+    h3: {
+      fontSize: "1.75em",
+      margin: "0.25em",
+      fontWeight: 500,
+      textAlign: "center",
+    },
+    h4: {
+      fontSize: "1.25em",
+      margin: "0.25em",
+      fontWeight: 400,
+      textAlign: "center",
+    },
   },
 });
 

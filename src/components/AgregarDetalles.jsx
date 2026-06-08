@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import "../css/AgregarDetalles.css";
 import { TextField, Button } from "@mui/material";
 
 export const AgregarDetalles = ({ actualizar }) => {
@@ -78,7 +77,7 @@ export const AgregarDetalles = ({ actualizar }) => {
               ...entradas,
               recurso: "",
             });
-            }}
+          }}
         >
           Agregar Recurso
         </Button>

@@ -24,7 +24,6 @@ export const LayoutPagina = () => {
         component="header"
         sx={{
           gridArea: "header",
-          textAlign: "center",
           alignContent: "center",
           backgroundColor: "primary.main",
           color: "primary.contrastText",
@@ -43,7 +42,11 @@ export const LayoutPagina = () => {
       </Grid>
       <Grid
         component="main"
-        sx={{ gridArea: "main", backgroundColor: "backround.default" }}
+        sx={{
+          gridArea: "main",
+          backgroundColor: "backround.default",
+          p: "1em",
+        }}
       >
         <Outlet />
       </Grid>
