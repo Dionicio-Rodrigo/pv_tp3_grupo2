@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import "../css/AgregarDetalles.css";
+import { TextField, Button } from "@mui/material";
 
 export const AgregarDetalles = ({ actualizar }) => {
   const [detalles, setDetalles] = useState({
@@ -32,13 +34,17 @@ export const AgregarDetalles = ({ actualizar }) => {
     <fieldset id="agregarDetalles">
       <div id="seccionDescripcion">
         <label htmlFor="bandejaDescripcion">Descripción</label>
-        <textarea
-          placeholder="Descripción del proyecto"
-          id="bandejaDescripcion"
-          name="descripcion"
+        <TextField
+          label="Descripción"
+          multiline
+          rows={4}
+          fullWidth
           value={detalles.descripcion}
-          onInput={(e) => {
-            setDetalles({ ...detalles, descripcion: e.target.value });
+          onChange={(e) => {
+            setDetalles({
+              ...detalles,
+              descripcion: e.target.value,
+            });
           }}
         />
       </div>
@@ -47,19 +53,19 @@ export const AgregarDetalles = ({ actualizar }) => {
           Recursos
           <br />
         </label>
-        <input
-          type="text"
-          id="bandejaRecurso"
-          className="bandejaDetalles"
-          placeholder="PDF, Drive, GitHub"
-          name="recurso"
+        <TextField
+          label="Recurso"
+          fullWidth
           value={entradas.recurso}
           onChange={(e) => {
-            setEntradas({ ...entradas, recurso: e.target.value });
+            setEntradas({
+              ...entradas,
+              recurso: e.target.value,
+            });
           }}
         />
-        <button
-          className="btnAgregarDetalles"
+        <Button
+          variant="contained"
           type="button"
           disabled={!btnRecurso}
           onClick={() => {
@@ -67,48 +73,50 @@ export const AgregarDetalles = ({ actualizar }) => {
               ...detalles,
               recursos: [...detalles.recursos, entradas.recurso],
             });
-            setEntradas({ ...entradas, recurso: "" });
-          }}
+
+            setEntradas({
+              ...entradas,
+              recurso: "",
+            });
+            }}
         >
           Agregar Recurso
-        </button>
+        </Button>
       </div>
       <div>
         <label htmlFor="seccionEquipo">Equipo</label>
         <div id="seccionEquipo">
           <div>
             <label htmlFor="bandejaNombre">Nombre: </label>
-            <input
-              type="text"
-              placeholder="Nombre"
-              id="bandejaNombre"
-              className="bandejaDetalles"
-              name="nombre"
+            <TextField
+              label="Nombre"
               value={entradas.nombre}
               onChange={(e) => {
-                setEntradas({ ...entradas, nombre: e.target.value });
+                setEntradas({
+                  ...entradas,
+                  nombre: e.target.value,
+                });
               }}
             />
             <br />
           </div>
           <div>
             <label htmlFor="bandejaRol">Rol: </label>
-            <input
-              type="text"
-              id="bandejaRol"
-              className="bandejaDetalles"
-              placeholder="Rol"
-              name="rol"
+            <TextField
+              label="Rol"
               value={entradas.rol}
               onChange={(e) => {
-                setEntradas({ ...entradas, rol: e.target.value });
+                setEntradas({
+                  ...entradas,
+                  rol: e.target.value,
+                });
               }}
             />
           </div>
         </div>
-        <button
+        <Button
+          variant="contained"
           type="button"
-          className="btnAgregarDetalles"
           disabled={!btnIntegrante}
           onClick={() => {
             setDetalles({
@@ -116,11 +124,16 @@ export const AgregarDetalles = ({ actualizar }) => {
               equipo: [...detalles.equipo, entradas.nombre],
               roles: [...detalles.roles, entradas.rol],
             });
-            setEntradas({ ...entradas, nombre: "", rol: "" });
+
+            setEntradas({
+              ...entradas,
+              nombre: "",
+              rol: "",
+            });
           }}
         >
           Agregar Integrante
-        </button>
+        </Button>
       </div>
     </fieldset>
   );

@@ -1,5 +1,16 @@
 import { useEffect, useState } from "react";
 import { AgregarDetalles } from "./AgregarDetalles";
+import {
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  Button,
+} from "@mui/material";
 
 export const AgregarProyecto = ({ funcion }) => {
   const [nuevoProyecto, setnuevoProyecto] = useState({
@@ -60,9 +71,9 @@ export const AgregarProyecto = ({ funcion }) => {
         <label>
           Titulo
           <br />
-          <input
-            type="text"
-            placeholder="Título"
+          <TextField
+            label="Título"
+            fullWidth
             onChange={(e) => {
               setnuevoProyecto({
                 ...nuevoProyecto,
@@ -72,10 +83,12 @@ export const AgregarProyecto = ({ funcion }) => {
           />
         </label>
 
-        <label>
-          Categoria
-          <br />
-          <select
+        <FormControl fullWidth>
+          <InputLabel>Categoría</InputLabel>
+
+          <Select
+            value={nuevoProyecto.categoria}
+            label="Categoría"
             onChange={(e) => {
               setnuevoProyecto({
                 ...nuevoProyecto,
@@ -83,49 +96,46 @@ export const AgregarProyecto = ({ funcion }) => {
               });
             }}
           >
-            <option value="Taller">Taller</option>
-            <option value="Comedor">Comedor</option>
-            <option value="Curso">Curso</option>
-            <option value="Recaudacion">Recaudación</option>
-          </select>
-        </label>
+           <MenuItem value="Taller">Taller</MenuItem>
+           <MenuItem value="Comedor">Comedor</MenuItem>
+           <MenuItem value="Curso">Curso</MenuItem>
+           <MenuItem value="Recaudacion">
+             Recaudación
+           </MenuItem>
+          </Select>
+        </FormControl>
         <div>
           Estado
           <br />
-          <input
-            type="radio"
-            name="estado"
-            id="finalizado"
-            onClick={() => {
+          <RadioGroup
+            onChange={(e) => {
               setnuevoProyecto({
                 ...nuevoProyecto,
-                finalizado: true,
+                finalizado: e.target.value === "true",
               });
             }}
-          />
-          <label htmlFor="finalizado">Finalizado</label>
-          <input
-            type="radio"
-            name="estado"
-            id="enProceso"
-            onClick={() => {
-              setnuevoProyecto({
-                ...nuevoProyecto,
-                finalizado: false,
-              });
-            }}
-          />
-          <label htmlFor="enProceso">En Proceso</label>
+          >
+            <FormControlLabel
+              value="true"
+              control={<Radio />}
+              label="Finalizado"
+            />
+
+            <FormControlLabel
+              value="false"
+              control={<Radio />}
+              label="En Proceso"
+            />
+          </RadioGroup>
         </div>
       </form>
-      <button
-        form="datosEntrada"
-        type="submit"
+      <Button
+        variant="contained"
         onClick={handlefuncion}
         disabled={invalido}
       >
         Agregar Proyecto
-      </button>
+      </Button>
       <div id="detalles">
         <h3>Agregar Detalles</h3>
         <AgregarDetalles actualizar={handleActualizar} />

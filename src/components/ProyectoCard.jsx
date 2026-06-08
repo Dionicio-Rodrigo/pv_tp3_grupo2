@@ -3,11 +3,10 @@ import {
   Box,
   Button,
   Card,
-  CardActionArea,
-  CardActions,
   CardContent,
   CardHeader,
   Stack,
+  Typography,
   useTheme,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
@@ -20,6 +19,7 @@ const Carta = styled(Card)(({ theme }) => ({
   maxWidth: "50vw",
   padding: "1em",
 }));
+
 export const ProyectoCard = ({ proyecto, eliminar }) => {
   const { titulo, categoria, finalizado, id } = proyecto;
   const theme = useTheme();
@@ -35,7 +35,7 @@ export const ProyectoCard = ({ proyecto, eliminar }) => {
             fontSize: "1.5em",
             textAlign: "center",
           }}
-        ></CardHeader>
+        />
 
         <Stack
           direction="row"
@@ -57,6 +57,7 @@ export const ProyectoCard = ({ proyecto, eliminar }) => {
           </Box>
         </Stack>
       </CardContent>
+
       <Stack direction="row" spacing={4} sx={{ alignSelf: "center" }}>
         <Button
           variant="contained"
@@ -65,6 +66,7 @@ export const ProyectoCard = ({ proyecto, eliminar }) => {
         >
           Eliminar Proyecto
         </Button>
+
         <Button component={NavLink} variant="outlined" to={`/Proyectos/${id}`}>
           Ver Detalles
         </Button>
