@@ -11,8 +11,8 @@ const Theme = createTheme({
   palette: {
     primary: { main: CELESTE, contrastText: BLANCO },
     secondary: { main: NEGRO, contrastText: BLANCO },
-    success: { main: NARANJA, contrastText: NEGRO },
-    error: { main: ROSA, contrastText: BLANCO },
+    success: { main: CELESTE, contrastText: BLANCO },
+    warning: { main: ROSA, contrastText: BLANCO },
     background: { default: BLANCO, paper: GRIS },
     colores: {
       naranja: NARANJA,
