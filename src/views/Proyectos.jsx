@@ -40,7 +40,7 @@ function Proyectos() {
         <Busqueda funcion={buscar}> Buscador</Busqueda>
       </Drawer>
 
-      <Stack sx={{ p: "1em" }} spacing={2}>
+      <Stack spacing={2}>
         <Paper>
           <Typography variant="h2">Nuestros Proyectos</Typography>
         </Paper>
