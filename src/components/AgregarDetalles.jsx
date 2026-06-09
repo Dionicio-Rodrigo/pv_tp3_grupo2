@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Stack, Box, Typography } from "@mui/material";
 
 export const AgregarDetalles = ({ actualizar }) => {
   const [detalles, setDetalles] = useState({
@@ -30,12 +30,11 @@ export const AgregarDetalles = ({ actualizar }) => {
   }, [entradas]);
 
   return (
-    <fieldset id="agregarDetalles">
-      <div id="seccionDescripcion">
-        <label htmlFor="bandejaDescripcion">Descripción</label>
+    <Stack spacing={2}>
+      <Box>
         <TextField
           label="Descripción"
-          multiline
+          multiline="true"
           rows={4}
           fullWidth
           value={detalles.descripcion}
@@ -46,94 +45,105 @@ export const AgregarDetalles = ({ actualizar }) => {
             });
           }}
         />
-      </div>
-      <div id="seccionRecursos">
-        <label htmlFor="bandejaRecurso">
-          Recursos
-          <br />
-        </label>
-        <TextField
-          label="Recurso"
-          fullWidth
-          value={entradas.recurso}
-          onChange={(e) => {
-            setEntradas({
-              ...entradas,
-              recurso: e.target.value,
-            });
-          }}
-        />
-        <Button
-          variant="contained"
-          type="button"
-          disabled={!btnRecurso}
-          onClick={() => {
-            setDetalles({
-              ...detalles,
-              recursos: [...detalles.recursos, entradas.recurso],
-            });
+      </Box>
 
-            setEntradas({
-              ...entradas,
-              recurso: "",
-            });
-          }}
-        >
-          Agregar Recurso
-        </Button>
-      </div>
-      <div>
-        <label htmlFor="seccionEquipo">Equipo</label>
-        <div id="seccionEquipo">
-          <div>
-            <label htmlFor="bandejaNombre">Nombre: </label>
-            <TextField
-              label="Nombre"
-              value={entradas.nombre}
-              onChange={(e) => {
-                setEntradas({
-                  ...entradas,
-                  nombre: e.target.value,
-                });
-              }}
-            />
-            <br />
-          </div>
-          <div>
-            <label htmlFor="bandejaRol">Rol: </label>
-            <TextField
-              label="Rol"
-              value={entradas.rol}
-              onChange={(e) => {
-                setEntradas({
-                  ...entradas,
-                  rol: e.target.value,
-                });
-              }}
-            />
-          </div>
-        </div>
-        <Button
-          variant="contained"
-          type="button"
-          disabled={!btnIntegrante}
-          onClick={() => {
-            setDetalles({
-              ...detalles,
-              equipo: [...detalles.equipo, entradas.nombre],
-              roles: [...detalles.roles, entradas.rol],
-            });
+      <Stack direction={{ sm: "column", md: "row" }} spacing={2}>
+        <Box component={Stack} sx={{ flexGrow: "1" }}>
+          <Box component={Typography} variant="h4">
+            Nuevo Recurso
+          </Box>
+          <TextField
+            label="Recurso"
+            fullWidth
+            multiline="true"
+            value={entradas.recurso}
+            onChange={(e) => {
+              setEntradas({
+                ...entradas,
+                recurso: e.target.value,
+              });
+            }}
+          />
+          <Button
+            variant="contained"
+            type="button"
+            disabled={!btnRecurso}
+            onClick={() => {
+              setDetalles({
+                ...detalles,
+                recursos: [...detalles.recursos, entradas.recurso],
+              });
 
-            setEntradas({
-              ...entradas,
-              nombre: "",
-              rol: "",
-            });
-          }}
-        >
-          Agregar Integrante
-        </Button>
-      </div>
-    </fieldset>
+              setEntradas({
+                ...entradas,
+                recurso: "",
+              });
+            }}
+            sx={{ margin: "1em", alignSelf: "center" }}
+          >
+            Agregar Recurso
+          </Button>
+        </Box>
+
+        <Box component={Stack}>
+          <Box component={Typography} variant="h4">
+            Nuevo Integrante
+          </Box>
+          <Box
+            component={Stack}
+            direction="row"
+            sx={{ justifyContent: "center" }}
+            spacing={2}
+          >
+            <Box>
+              <TextField
+                label="Nombre"
+                value={entradas.nombre}
+                onChange={(e) => {
+                  setEntradas({
+                    ...entradas,
+                    nombre: e.target.value,
+                  });
+                }}
+              />
+              <br />
+            </Box>
+            <Box>
+              <TextField
+                label="Rol"
+                value={entradas.rol}
+                onChange={(e) => {
+                  setEntradas({
+                    ...entradas,
+                    rol: e.target.value,
+                  });
+                }}
+              />
+            </Box>
+          </Box>
+          <Button
+            variant="contained"
+            type="button"
+            disabled={!btnIntegrante}
+            onClick={() => {
+              setDetalles({
+                ...detalles,
+                equipo: [...detalles.equipo, entradas.nombre],
+                roles: [...detalles.roles, entradas.rol],
+              });
+
+              setEntradas({
+                ...entradas,
+                nombre: "",
+                rol: "",
+              });
+            }}
+            sx={{ margin: "1em", alignSelf: "center" }}
+          >
+            Agregar Integrante
+          </Button>
+        </Box>
+      </Stack>
+    </Stack>
   );
 };

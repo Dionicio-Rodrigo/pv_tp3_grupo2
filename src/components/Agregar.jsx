@@ -10,7 +10,15 @@ import {
   RadioGroup,
   FormControlLabel,
   Button,
+  Box,
+  AccordionSummary,
+  AccordionDetails,
+  Accordion,
+  Stack,
+  Typography,
+  Chip,
 } from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
 
 export const AgregarProyecto = ({ funcion }) => {
   const [nuevoProyecto, setnuevoProyecto] = useState({
@@ -64,96 +72,138 @@ export const AgregarProyecto = ({ funcion }) => {
   };
 
   return (
-    <div className="AgregarNuevo">
-      <h2>Agregar Nuevo Proyecto</h2>
-
-      <form action={() => {}} id="datosEntrada">
-        <label>
-          Titulo
-          <br />
-          <TextField
-            label="Título"
-            fullWidth
-            onChange={(e) => {
-              setnuevoProyecto({
-                ...nuevoProyecto,
-                titulo: e.target.value,
-              });
-            }}
-          />
-        </label>
-
-        <FormControl fullWidth>
-          <InputLabel>Categoría</InputLabel>
-
-          <Select
-            value={nuevoProyecto.categoria}
-            label="Categoría"
-            onChange={(e) => {
-              setnuevoProyecto({
-                ...nuevoProyecto,
-                categoria: e.target.value,
-              });
-            }}
+    <Stack spacing={1} direction={{ sm: "column", md: "row" }}>
+      <Box sx={{ flexGrow: "1", minWidth: "40%" }}>
+        <Accordion
+          sx={{ bgcolor: "primary.main", color: "primary.contrastText" }}
+        >
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            <Typography variant="h3" sx={{ textShadow: "1px 1px  #292f36" }}>
+              Agregar Nuevo Proyecto
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails
+            sx={{ bgcolor: "background.default", color: "secondary.main" }}
           >
-           <MenuItem value="Taller">Taller</MenuItem>
-           <MenuItem value="Comedor">Comedor</MenuItem>
-           <MenuItem value="Curso">Curso</MenuItem>
-           <MenuItem value="Recaudacion">
-             Recaudación
-           </MenuItem>
-          </Select>
-        </FormControl>
-        <div>
-          Estado
-          <br />
-          <RadioGroup
-            onChange={(e) => {
-              setnuevoProyecto({
-                ...nuevoProyecto,
-                finalizado: e.target.value === "true",
-              });
-            }}
-          >
-            <FormControlLabel
-              value="true"
-              control={<Radio />}
-              label="Finalizado"
-            />
+            <Stack
+              spacing={3}
+              component="form"
+              action={() => {}}
+              id="datosEntrada"
+            >
+              <TextField
+                label="Título"
+                onChange={(e) => {
+                  setnuevoProyecto({
+                    ...nuevoProyecto,
+                    titulo: e.target.value,
+                  });
+                }}
+              />
 
-            <FormControlLabel
-              value="false"
-              control={<Radio />}
-              label="En Proceso"
-            />
-          </RadioGroup>
-        </div>
-      </form>
-      <Button
-        variant="contained"
-        onClick={handlefuncion}
-        disabled={invalido}
-      >
-        Agregar Proyecto
-      </Button>
-      <div id="detalles">
-        <h3>Agregar Detalles</h3>
-        <AgregarDetalles actualizar={handleActualizar} />
-        <div id="cantidades">
-          <span id="recursos">
-            Recursos Añadidos:
-            {nuevoProyecto.detalles.recursos.length > 0
-              ? ` ${nuevoProyecto.detalles.recursos.length}`
-              : ` 0 `}
-          </span>
-          <span id="equipo">
-            Integrantes Añadido:
-            {nuevoProyecto.detalles.equipo.length > 0
-              ? ` ${nuevoProyecto.detalles.equipo.length}`
-              : ` 0 `}
-          </span>
-        </div>
-      </div>
-    </div>
+              <Stack
+                spacing={{ sm: 2, md: 3 }}
+                direction={{ sm: "column", md: "row" }}
+              >
+                <FormControl sx={{ flexGrow: "1" }}>
+                  <InputLabel>Categoría</InputLabel>
+
+                  <Select
+                    value={nuevoProyecto.categoria}
+                    label="Categoría"
+                    onChange={(e) => {
+                      setnuevoProyecto({
+                        ...nuevoProyecto,
+                        categoria: e.target.value,
+                      });
+                    }}
+                  >
+                    <MenuItem value="Taller">Taller</MenuItem>
+                    <MenuItem value="Comedor">Comedor</MenuItem>
+                    <MenuItem value="Curso">Curso</MenuItem>
+                    <MenuItem value="Recaudacion">Recaudación</MenuItem>
+                  </Select>
+                </FormControl>
+                <Box sx={{ flexGrow: "1", alignSelf: "center" }}>
+                  Estado
+                  <br />
+                  <RadioGroup
+                    onChange={(e) => {
+                      setnuevoProyecto({
+                        ...nuevoProyecto,
+                        finalizado: e.target.value === "true",
+                      });
+                    }}
+                  >
+                    <FormControlLabel
+                      value="true"
+                      control={<Radio />}
+                      label="Finalizado"
+                    />
+
+                    <FormControlLabel
+                      value="false"
+                      control={<Radio />}
+                      label="En Proceso"
+                    />
+                  </RadioGroup>
+                </Box>
+              </Stack>
+              <Button
+                variant="contained"
+                onClick={handlefuncion}
+                disabled={invalido}
+                sx={{ alignSelf: "center" }}
+              >
+                Agregar Proyecto
+              </Button>
+            </Stack>
+          </AccordionDetails>
+        </Accordion>
+      </Box>
+      <Box sx={{ minWidth: "60%" }}>
+        <Accordion
+          sx={{ bgcolor: "primary.main", color: "primary.contrastText" }}
+        >
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            <Typography variant="h3" sx={{ textShadow: "1px 1px  #292f36" }}>
+              Agregar Detalles al Nuevo Proyecto
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails
+            sx={{ bgcolor: "background.default", color: "secondary.main" }}
+          >
+            <Box component={Stack}>
+              <AgregarDetalles actualizar={handleActualizar} />
+
+              <Box
+                sx={{ alignSelf: "center", textShadow: "1px 1px  #292f36" }}
+                component={Stack}
+                spacing={3}
+                direction="row"
+              >
+                <Chip
+                  label={`Recursos Añadidos:${
+                    nuevoProyecto.detalles.recursos.length > 0
+                      ? ` ${nuevoProyecto.detalles.recursos.length}`
+                      : ` 0 `
+                  }`}
+                  color="success"
+                />
+
+                <Chip
+                  label={`Integrantes Añadidos:${
+                    nuevoProyecto.detalles.equipo.length > 0
+                      ? ` ${nuevoProyecto.detalles.equipo.length}`
+                      : ` 0 `
+                  }`}
+                  color="warning"
+                />
+              </Box>
+            </Box>
+          </AccordionDetails>
+        </Accordion>
+      </Box>
+    </Stack>
   );
 };
