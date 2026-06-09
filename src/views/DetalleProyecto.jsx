@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import proyectoService from "../services/proyectoServices";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import {
   Button,
   Box,
@@ -19,8 +19,9 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Fab,
 } from "@mui/material";
-import { InsertDriveFile } from "@mui/icons-material";
+import { ArrowBack, InsertDriveFile } from "@mui/icons-material";
 
 export const DetalleProyecto = ({}) => {
   const ruta = useParams();
@@ -52,7 +53,7 @@ export const DetalleProyecto = ({}) => {
           <Divider sx={{ mt: "1em", mb: "1em" }} />
           <Typography variant="p">{proyecto.detalles.descripcion}</Typography>
         </Paper>
-        <Stack direction={{ xs: "column", sm: "row" }} spacing={1}>
+        <Stack direction={{ sm: "column", md: "row" }} spacing={1}>
           <Paper
             sx={{
               backgroundColor: "colores.rosa",
@@ -114,14 +115,20 @@ export const DetalleProyecto = ({}) => {
           </Paper>
         </Stack>
       </Stack>
-      <Button
-        component={NavLink}
+      <Fab
+        component={Link}
         to="/Proyectos"
-        variant="contained"
-        sx={{ mt: "1em" }}
+        variant="extended"
+        color="primary"
+        sx={{
+          position: "fixed",
+          bottom: 35,
+          left: 16,
+        }}
       >
+        <ArrowBack />
         Volver
-      </Button>
+      </Fab>
     </Box>
   );
 };
