@@ -72,7 +72,7 @@ export const AgregarProyecto = ({ funcion }) => {
   };
 
   return (
-    <Stack spacing={1} direction={{ sm: "column", md: "row" }}>
+    <Stack spacing={{ xs: 1, md: 1 }} direction={{ sm: "column", md: "row" }}>
       <Box sx={{ flexGrow: "2" }}>
         <Accordion
           sx={{ bgcolor: "primary.main", color: "primary.contrastText" }}
@@ -107,7 +107,6 @@ export const AgregarProyecto = ({ funcion }) => {
               >
                 <FormControl sx={{ flexGrow: "1" }}>
                   <InputLabel>Categoría</InputLabel>
-
                   <Select
                     value={nuevoProyecto.categoria}
                     label="Categoría"
@@ -125,8 +124,7 @@ export const AgregarProyecto = ({ funcion }) => {
                   </Select>
                 </FormControl>
                 <Box sx={{ flexGrow: "1", alignSelf: "center" }}>
-                  Estado
-                  <br />
+                  <Typography variant="h4">Estado</Typography>
                   <RadioGroup
                     onChange={(e) => {
                       setnuevoProyecto({

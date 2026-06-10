@@ -54,8 +54,8 @@ export const DetalleProyecto = ({}) => {
           <Typography variant="p">{proyecto.detalles.descripcion}</Typography>
         </Paper>
         <Stack
-          direction={{ sm: "column", md: "row" }}
-          spacing={{ xs: 1, sm: 1, md: 1 }}
+          direction={{ xs: "column", md: "row" }}
+          spacing={{ xs: 1, md: 1 }}
         >
           <Paper
             sx={{
