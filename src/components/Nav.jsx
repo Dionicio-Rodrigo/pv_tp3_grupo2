@@ -1,5 +1,15 @@
 import styled from "@emotion/styled";
-import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+} from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import FolderIcon from "@mui/icons-material/Folder";
+import PersonIcon from "@mui/icons-material/Person";
 import { Link, NavLink } from "react-router-dom";
 
 const NavElemento = styled(ListItemButton)(({ theme }) => ({
@@ -16,14 +26,27 @@ const NavElemento = styled(ListItemButton)(({ theme }) => ({
 
 export const Nav = () => {
   return (
-    <List sx={{ p: "0" }}>
+    <List
+      component={Stack}
+      sx={{ p: "0", flexGrow: "1" }}
+      direction={{ xs: "row", md: "column" }}
+    >
       <NavElemento component={NavLink} to="/">
+        <ListItemIcon>
+          <HomeIcon sx={{ color: "background.default" }} />
+        </ListItemIcon>
         <ListItemText primary="Inicio" />
       </NavElemento>
       <NavElemento component={NavLink} to="/Proyectos">
+        <ListItemIcon>
+          <FolderIcon sx={{ color: "background.default" }} />
+        </ListItemIcon>
         <ListItemText primary="Proyectos" />
       </NavElemento>
       <NavElemento component={NavLink} to="/Perfil">
+        <ListItemIcon>
+          <PersonIcon sx={{ color: "background.default" }} />
+        </ListItemIcon>
         <ListItemText primary="Mi Perfil" />
       </NavElemento>
     </List>

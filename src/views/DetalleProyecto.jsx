@@ -53,7 +53,10 @@ export const DetalleProyecto = ({}) => {
           <Divider sx={{ mt: "1em", mb: "1em" }} />
           <Typography variant="p">{proyecto.detalles.descripcion}</Typography>
         </Paper>
-        <Stack direction={{ sm: "column", md: "row" }} spacing={1}>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={{ xs: 1, md: 1 }}
+        >
           <Paper
             sx={{
               backgroundColor: "colores.rosa",
