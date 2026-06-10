@@ -6,24 +6,10 @@ import { Outlet } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 export const LayoutPagina = () => {
   return (
-    <Grid
-      container
-      sx={{
-        display: "grid",
-        minHeight: "100vh",
-        gridTemplateColumns: "1fr 1fr 300px",
-        gridTemplateRows: "auto 1fr auto",
-        gridTemplateAreas: `
-          "header header header"
-          "main   main   main"
-          "footer footer footer"
-        `,
-      }}
-    >
-      <Grid
+    <Stack>
+      <Box
         component="header"
         sx={{
-          gridArea: "header",
           backgroundColor: "primary.main",
           color: "primary.contrastText",
           textShadow: "1px 1px  #292f36",
@@ -33,21 +19,19 @@ export const LayoutPagina = () => {
           <Header />
           <Nav />
         </Stack>
-      </Grid>
-      <Grid
+      </Box>
+      <Box
         component="main"
         sx={{
-          gridArea: "main",
           backgroundColor: "backround.default",
           p: "1em",
         }}
       >
         <Outlet />
-      </Grid>
-      <Grid
+      </Box>
+      <Box
         component="footer"
         sx={{
-          gridArea: "footer",
           backgroundColor: "secondary.main",
           color: "primary.contrastText",
           textShadow: "1px 1px  #292f36",
@@ -55,7 +39,7 @@ export const LayoutPagina = () => {
         }}
       >
         <Footer />
-      </Grid>
-    </Grid>
+      </Box>
+    </Stack>
   );
 };
