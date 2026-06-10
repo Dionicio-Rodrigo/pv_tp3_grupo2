@@ -73,7 +73,7 @@ export const AgregarProyecto = ({ funcion }) => {
 
   return (
     <Stack spacing={1} direction={{ sm: "column", md: "row" }}>
-      <Box sx={{ flexGrow: "1", minWidth: "40%" }}>
+      <Box sx={{ flexGrow: "2" }}>
         <Accordion
           sx={{ bgcolor: "primary.main", color: "primary.contrastText" }}
         >
@@ -161,7 +161,7 @@ export const AgregarProyecto = ({ funcion }) => {
           </AccordionDetails>
         </Accordion>
       </Box>
-      <Box sx={{ minWidth: "60%" }}>
+      <Box sx={{ flexGrow: "3" }}>
         <Accordion
           sx={{ bgcolor: "primary.main", color: "primary.contrastText" }}
         >
