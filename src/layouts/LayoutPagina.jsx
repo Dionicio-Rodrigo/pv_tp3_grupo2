@@ -1,7 +1,7 @@
 import { Header } from "../components/Header.jsx";
 import { Nav } from "../components/Nav.jsx";
 import { Footer } from "../components/Footer.jsx";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 export const LayoutPagina = () => {
@@ -14,7 +14,7 @@ export const LayoutPagina = () => {
         gridTemplateColumns: "1fr 1fr 300px",
         gridTemplateRows: "auto 1fr auto",
         gridTemplateAreas: `
-          "header header nav"
+          "header header header"
           "main   main   main"
           "footer footer footer"
         `,
@@ -24,21 +24,15 @@ export const LayoutPagina = () => {
         component="header"
         sx={{
           gridArea: "header",
-          alignContent: "center",
           backgroundColor: "primary.main",
           color: "primary.contrastText",
           textShadow: "1px 1px  #292f36",
         }}
       >
-        <Header />
-      </Grid>
-      <Grid
-        component="nav"
-        sx={{
-          gridArea: "nav",
-        }}
-      >
-        <Nav />
+        <Stack direction={{ sm: "column", md: "row" }}>
+          <Header />
+          <Nav />
+        </Stack>
       </Grid>
       <Grid
         component="main"
