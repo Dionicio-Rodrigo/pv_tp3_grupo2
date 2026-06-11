@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useUser } from "../context/UsuarioContext.jsx";
 import {
   Grid,
   Typography,
@@ -11,10 +12,11 @@ import {
 } from "@mui/material";
 
 const Perfil = () => {
+  const { usuario, actualizarDatos } = useUser();
+
   const [perfil, setPerfil] = useState({
-    nombre: "Martin Fernandez",
-    dni: "46.369.852",
-    correo: "martin.fernandez@unju.edu.ar",
+    nombre: usuario.nombre,
+    dni: usuario.dni,
   });
 
   const [mensaje, setMensaje] = useState({
@@ -68,7 +70,7 @@ const Perfil = () => {
               />
             </Grid>
             <Grid xs={12}>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={() => actualizarDatos(perfil)}>
                 Actualizar Perfil
               </Button>
             </Grid>
